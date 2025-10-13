@@ -3,7 +3,7 @@ import { dbPromise } from "@/lib/db";
 import { getAuth } from "@/lib/auth";
 import { headers } from "next/headers";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const auth = await getAuth();
     const session = await auth.api.getSession({
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
       .findOne({ userId: session.user.id });
 
     return NextResponse.json({ profile: userProfile });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching user profile:", error);
     return NextResponse.json(
       { error: "Failed to fetch profile" },
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "Profile saved successfully",
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error saving user profile:", error);
     return NextResponse.json(
       { error: "Failed to save profile" },

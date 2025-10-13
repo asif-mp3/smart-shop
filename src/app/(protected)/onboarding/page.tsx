@@ -111,10 +111,9 @@ export default function OnboardingPage() {
       });
 
       router.push("/customized-products");
-    } catch (error: any) {
-      toast.error("Failed to save profile", {
-        description: error.message || "Please try again",
-      });
+    } catch (error) {
+      toast.error("Failed to save profile");
+      console.error("Onboarding error:", error);
     } finally {
       setIsLoading(false);
     }

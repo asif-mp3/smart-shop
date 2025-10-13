@@ -78,10 +78,9 @@ export default function SignUpPage() {
         description: "Let's personalize your experience...",
       });
       router.push("/onboarding");
-    } catch (err: any) {
-      toast.error("An unexpected error occurred", {
-        description: err.message || "Please try again later.",
-      });
+    } catch (err) {
+      toast.error("Please try again later.");
+      console.error("Sign up error:", err);
     } finally {
       setIsLoading(false);
     }

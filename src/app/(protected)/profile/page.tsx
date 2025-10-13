@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "@/lib/auth-client";
-import { Navbar } from "@/components/layout/navbar";
 import {
   Card,
   CardContent,
