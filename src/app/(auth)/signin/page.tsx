@@ -61,6 +61,7 @@ export default function SignInPage() {
         email: data.email,
         password: data.password,
       });
+      console.log(result);
 
       if (result.error) {
         const errorMessage = result.error.message || "Failed to sign in";

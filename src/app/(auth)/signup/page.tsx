@@ -54,6 +54,7 @@ export default function SignUpPage() {
         password: data.password,
         name: data.name,
       });
+      console.log(result);
 
       if (result.error) {
         // Handle specific error messages
