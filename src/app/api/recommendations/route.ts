@@ -130,6 +130,11 @@ async function generateRecommendations(
 - Location: ${userProfile.address?.city || "Not specified"}, ${
     userProfile.address?.country || "Not specified"
   }
+- Recent Search History: ${
+    userProfile.searchHistory?.length
+      ? userProfile.searchHistory.join(", ")
+      : "None"
+  }
 
 **Available Products (${products.length} items):**
 ${products
@@ -156,6 +161,7 @@ For each recommendation, provide:
 **Important Guidelines:**
 - Prioritize products that match the user's favorite categories
 - Consider the user's lifestyle, interests, and shopping habits
+- Pay attention to their recent search history - recommend products related to what they've been searching for
 - Ensure price recommendations align with their budget preference
 - Provide genuine, personalized explanations - not generic descriptions
 - Rank by relevance score (highest first)
