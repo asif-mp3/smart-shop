@@ -18,7 +18,7 @@ import { useDebounce } from "@/hooks";
 import sampleRecommendations from "@/data/sample-recommendations.json";
 
 // Toggle this to switch between local data and API
-const USE_LOCAL_DATA = true;
+const USE_LOCAL_DATA = false;
 
 export default function RecommendedProductsPage() {
   const [recommendations, setRecommendations] = useState<
