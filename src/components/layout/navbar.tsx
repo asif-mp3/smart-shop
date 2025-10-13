@@ -16,6 +16,7 @@ import {
   AvatarFallback,
 } from "@/components/ui";
 import { LogOut, User, ShoppingBag, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export function Navbar() {
   const { data: session } = useSession();
@@ -67,22 +68,42 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => router.push(hasCompletedOnboarding ? "/customized-products" : "/products")}
+          onClick={() =>
+            router.push(
+              hasCompletedOnboarding ? "/customized-products" : "/products"
+            )
+          }
         >
-          <ShoppingBag className="h-6 w-6 text-primary" />
-          <h1 className="text-xl font-bold">ShopSmart</h1>
+          <Image
+            src="/logo.png"
+            alt="ShopSmart Logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 bg-white"
+          />
+          <div className="text-xl font-bold">ShopSmart</div>
         </div>
 
         <div className="flex items-center gap-4">
           {hasCompletedOnboarding ? (
-            <Button
-              variant="link"
-              onClick={() => router.push("/customized-products")}
-              className="hidden sm:flex"
-            >
-              <Sparkles className="h-4 w-4" />
-              For You
-            </Button>
+            <>
+              <Button
+                variant="link"
+                onClick={() => router.push("/customized-products")}
+                className="hidden sm:flex"
+              >
+                <Sparkles className="h-4 w-4" />
+                Recommended
+              </Button>
+              <Button
+                variant="link"
+                onClick={() => router.push("/products")}
+                className="hidden sm:flex"
+              >
+                <ShoppingBag className="h-4 w-4" />
+                All Products
+              </Button>
+            </>
           ) : (
             <Button
               variant="link"

@@ -3,9 +3,12 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Smart Recommendation System",
+  title: "ShopSmart - Personalized Product Recommendations",
   description:
-    "A recommendation system that leverages AI to provide personalized suggestions.",
+    "ShopSmart is an intelligent e-commerce platform that provides personalized product recommendations based on your preferences, lifestyle, and shopping habits. Discover products tailored just for you across Electronics, Clothing, Sports, Home & Garden, Accessories, and Personal Care categories.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
