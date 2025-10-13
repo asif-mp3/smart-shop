@@ -75,9 +75,9 @@ export default function SignUpPage() {
       }
 
       toast.success("Account created successfully!", {
-        description: "Redirecting to dashboard...",
+        description: "Redirecting to products...",
       });
-      router.push("/dashboard");
+      router.push("/products");
     } catch (err: any) {
       toast.error("An unexpected error occurred", {
         description: err.message || "Please try again later.",

@@ -15,7 +15,7 @@ export default function AuthLayout({
 
   useEffect(() => {
     if (!isPending && session) {
-      router.push("/dashboard");
+      router.push("/products");
     }
   }, [session, isPending, router]);
 

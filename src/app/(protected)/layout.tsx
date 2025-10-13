@@ -1,5 +1,6 @@
 "use client";
 
+import { Navbar } from "@/components/layout";
 import { FullScreenLoader } from "@/components/loaders";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -24,5 +25,10 @@ export default function ProtectedLayout({
     return <FullScreenLoader />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }

@@ -80,9 +80,9 @@ export default function SignInPage() {
       }
 
       toast.success("Welcome back!", {
-        description: "Redirecting to dashboard...",
+        description: "Redirecting to products...",
       });
-      router.push("/dashboard");
+      router.push("/products");
     } catch {
       toast.error("An unexpected error occurred", {
         description: "Please try again later.",
