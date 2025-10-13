@@ -31,7 +31,7 @@ export default function ProtectedLayout({
           setProfileChecked(true);
 
           // If no profile or onboarding not completed, redirect to onboarding
-          if (!data.profile || !data.profile.onboardingCompleted) {
+          if (!data || !data.onboardingCompleted) {
             router.push("/onboarding");
           }
         })

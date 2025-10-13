@@ -5,10 +5,11 @@ import { dbPromise } from "@/lib/db";
 import { headers } from "next/headers";
 import productsData from "@/data/products.json";
 import { Product, RecommendationSchema } from "@/types/recommendation";
+import { UserProfile } from "@/types/user-profile";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
     const auth = await getAuth();
     const session = await auth.api.getSession({
@@ -35,7 +36,7 @@ export async function POST(req: NextRequest) {
     // Step 1: Filter products based on user preferences
     const filteredProducts = filterProductsByUserPreferences(
       productsData as Product[],
-      userProfile
+      userProfile as unknown as UserProfile
     );
 
     console.log(
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
     // Step 2: Use Gemini to rank and explain recommendations
     const recommendations = await generateRecommendations(
       filteredProducts,
-      userProfile,
+      userProfile as unknown as UserProfile,
       session.user
     );
 
@@ -54,10 +55,10 @@ export async function POST(req: NextRequest) {
       totalFiltered: filteredProducts.length,
       totalProducts: productsData.length,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error generating recommendations:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to generate recommendations" },
+      { error: "Failed to generate recommendations" },
       { status: 500 }
     );
   }
@@ -65,7 +66,7 @@ export async function POST(req: NextRequest) {
 
 function filterProductsByUserPreferences(
   products: Product[],
-  userProfile: any
+  userProfile: UserProfile
 ): Product[] {
   let filtered = products;
 
@@ -103,8 +104,8 @@ function filterProductsByUserPreferences(
 
 async function generateRecommendations(
   products: Product[],
-  userProfile: any,
-  user: any
+  userProfile: UserProfile,
+  user: { name?: string; email?: string }
 ) {
   const model = genAI.getGenerativeModel({
     model: "gemini-2.5-flash",

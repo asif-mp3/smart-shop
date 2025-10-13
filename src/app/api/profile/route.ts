@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
       .collection("userProfiles")
       .findOne({ userId: session.user.id });
 
-    return NextResponse.json({ profile: userProfile });
+    return NextResponse.json(userProfile);
   } catch (error) {
     console.error("Error fetching user profile:", error);
     return NextResponse.json(
@@ -99,6 +99,76 @@ export async function POST(request: NextRequest) {
     console.error("Error saving user profile:", error);
     return NextResponse.json(
       { error: "Failed to save profile" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const auth = await getAuth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (!session?.user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await request.json();
+    const db = await dbPromise;
+
+    // Handle different PATCH actions
+    if (body.action === "addSearchHistory") {
+      const searchTerm = body.searchTerm;
+      if (!searchTerm) {
+        return NextResponse.json(
+          { error: "Search term is required" },
+          { status: 400 }
+        );
+      }
+
+      // First remove the term if it exists, then add it at position 0
+      // This ensures uniqueness and maintains order in a single atomic operation
+      await db.collection("userProfiles").updateOne(
+        { userId: session.user.id },
+        [
+          {
+            $set: {
+              searchHistory: {
+                $concatArrays: [
+                  [searchTerm],
+                  {
+                    $slice: [
+                      {
+                        $filter: {
+                          input: { $ifNull: ["$searchHistory", []] },
+                          cond: { $ne: ["$$this", searchTerm] },
+                        },
+                      },
+                      9, // Keep 9 old terms + 1 new = 10 total
+                    ],
+                  },
+                ],
+              },
+              updatedAt: new Date(),
+            },
+          },
+        ],
+        { upsert: true }
+      );
+
+      return NextResponse.json({
+        success: true,
+        message: "Search history updated",
+      });
+    }
+
+    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    return NextResponse.json(
+      { error: "Failed to update profile" },
       { status: 500 }
     );
   }

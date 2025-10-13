@@ -28,7 +28,7 @@ export function Navbar() {
       fetch("/api/profile")
         .then((res) => res.json())
         .then((data) => {
-          setHasCompletedOnboarding(data.profile?.onboardingCompleted || false);
+          setHasCompletedOnboarding(data?.onboardingCompleted || false);
         })
         .catch((err) => {
           console.error("Error checking profile:", err);
@@ -43,7 +43,7 @@ export function Navbar() {
           toast.success("Signed out successfully", {
             description: "See you next time!",
           });
-          window.location.href = "/signin";
+          window.location.href = "/";
         },
         onError: () => {
           toast.error("Sign out failed", {
@@ -68,9 +68,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() =>
-            router.push(hasCompletedOnboarding ? "/recommended" : "/products")
-          }
+          onClick={() => router.push("/")}
         >
           <Image
             src="/logo.png"
@@ -83,75 +81,88 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          {hasCompletedOnboarding ? (
+          {session ? (
             <>
-              <Button
-                variant="link"
-                onClick={() => router.push("/recommended")}
-                className="hidden sm:flex"
-              >
-                <Sparkles className="h-4 w-4" />
-                Recommended
-              </Button>
-              <Button
-                variant="link"
-                onClick={() => router.push("/products")}
-                className="hidden sm:flex"
-              >
-                <ShoppingBag className="h-4 w-4" />
-                All Products
-              </Button>
+              {hasCompletedOnboarding ? (
+                <>
+                  <Button
+                    variant="link"
+                    onClick={() => router.push("/recommended")}
+                    className="hidden sm:flex"
+                  >
+                    <Sparkles className="h-4 w-4" />
+                    Recommended
+                  </Button>
+                  <Button
+                    variant="link"
+                    onClick={() => router.push("/products")}
+                    className="hidden sm:flex"
+                  >
+                    <ShoppingBag className="h-4 w-4" />
+                    All Products
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  variant="link"
+                  onClick={() => router.push("/products")}
+                  className="hidden sm:flex"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  Products
+                </Button>
+              )}
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="relative h-10 w-10 rounded-full"
+                  >
+                    <Avatar>
+                      <AvatarFallback className="bg-primary text-primary-foreground">
+                        {session?.user.name
+                          ? getInitials(session.user.name)
+                          : "U"}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        {session?.user.name}
+                      </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {session?.user.email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => router.push("/profile")}>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={handleSignOut}
+                    className="text-red-600"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sign out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </>
           ) : (
-            <Button
-              variant="link"
-              onClick={() => router.push("/products")}
-              className="hidden sm:flex"
-            >
-              <ShoppingBag className="h-4 w-4" />
-              Products
-            </Button>
-          )}
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="relative h-10 w-10 rounded-full"
-              >
-                <Avatar>
-                  <AvatarFallback className="bg-primary text-primary-foreground">
-                    {session?.user.name ? getInitials(session.user.name) : "U"}
-                  </AvatarFallback>
-                </Avatar>
+            <>
+              <Button variant="outline" onClick={() => router.push("/signin")}>
+                Sign In
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
-                    {session?.user.name}
-                  </p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    {session?.user.email}
-                  </p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => router.push("/profile")}>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={handleSignOut}
-                className="text-red-600"
-              >
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Sign out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              <Button onClick={() => router.push("/signup")}>Sign Up</Button>
+            </>
+          )}
         </div>
       </div>
     </nav>

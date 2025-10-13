@@ -1,19 +1,7 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Button,
-  Badge,
-  Separator,
-} from "@/components/ui";
-import { Star, ShoppingCart } from "lucide-react";
+import {  Separator } from "@/components/ui";
 import productsData from "@/data/products.json";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   CategoryFilter,
@@ -22,7 +10,10 @@ import {
   SearchFilter,
   SortFilter,
   StockFilter,
+  SortOption,
 } from "@/components/filters";
+import { ProductCard } from "@/components/cards";
+import { useDebounce } from "@/hooks";
 
 interface Product {
   id: string;
@@ -51,22 +42,18 @@ export default function ProductsPage() {
     [products]
   );
 
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState<[number, number]>([minPrice, maxPrice]);
   const [minRating, setMinRating] = useState<number>(0);
   const [inStockOnly, setInStockOnly] = useState<boolean>(false);
-  const [sort, setSort] = useState<
-    | "relevance"
-    | "price-asc"
-    | "price-desc"
-    | "rating-desc"
-    | "name-asc"
-    | "name-desc"
-  >("relevance");
+  const [sort, setSort] = useState<SortOption>("relevance");
+
+  // Debounce search input
+  const debouncedSearch = useDebounce(searchInput, 500);
 
   const filtered = useMemo(() => {
-    const normalizedSearch = search.trim().toLowerCase();
+    const normalizedSearch = debouncedSearch.trim().toLowerCase();
 
     let list = products.filter((p) => {
       const matchesSearch = normalizedSearch
@@ -109,7 +96,7 @@ export default function ProductsPage() {
     }
 
     return list;
-  }, [products, search, category, price, minRating, inStockOnly, sort]);
+  }, [debouncedSearch, category, price, minRating, inStockOnly, sort]);
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -122,7 +109,7 @@ export default function ProductsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <aside className="lg:col-span-3 space-y-5 lg:sticky lg:top-24 self-start border-r pr-5">
-          <SearchFilter value={search} onChange={setSearch} />
+          <SearchFilter value={searchInput} onChange={setSearchInput} />
           <CategoryFilter
             categories={categories}
             value={category}
@@ -141,55 +128,14 @@ export default function ProductsPage() {
         </aside>
 
         <section className="lg:col-span-9">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
             {filtered.map((product) => (
-              <Card
+              <ProductCard
                 key={product.id}
-                className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-                  />
-                  <Badge className="absolute top-2 right-2 bg-background/90 text-foreground">
-                    {product.category}
-                  </Badge>
-                </div>
-
-                <CardHeader className="flex-grow">
-                  <CardTitle className="line-clamp-1 text-base">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl font-bold">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-medium">
-                        {product.rating}
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-
-                <CardFooter>
-                  <Button className="w-full" disabled={!product.inStock}>
-                    <ShoppingCart className="mr-2 h-4 w-4" />
-                    {product.inStock ? "Add to Cart" : "Out of Stock"}
-                  </Button>
-                </CardFooter>
-              </Card>
+                product={product}
+                showStock={true}
+                variant="default"
+              />
             ))}
           </div>
         </section>

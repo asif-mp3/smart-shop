@@ -31,6 +31,9 @@ export interface UserProfile {
   // Preferences
   subscribedToNewsletter: boolean;
 
+  // Search History
+  searchHistory?: string[];
+
   // Metadata
   onboardingCompleted: boolean;
   completedAt?: Date;

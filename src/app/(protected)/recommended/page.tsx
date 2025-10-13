@@ -1,22 +1,8 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  Button,
-  Badge,
-  Skeleton,
-  Separator,
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui";
-import { Star, ShoppingCart, Sparkles, Info, TrendingUp } from "lucide-react";
-import Image from "next/image";
+import { Button, Badge, Skeleton, Separator } from "@/components/ui";
+import { Sparkles, TrendingUp } from "lucide-react";
 import { ProductRecommendation } from "@/types/recommendation";
 import { toast } from "sonner";
 import {
@@ -27,6 +13,8 @@ import {
   SortFilter,
   SortOption,
 } from "@/components/filters";
+import { ProductCard } from "@/components/cards";
+import { useDebounce } from "@/hooks";
 import sampleRecommendations from "@/data/sample-recommendations.json";
 
 // Toggle this to switch between local data and API
@@ -41,11 +29,14 @@ export default function RecommendedProductsPage() {
   const [stats, setStats] = useState({ totalFiltered: 0, totalProducts: 0 });
 
   // Filter states
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("all");
   const [price, setPrice] = useState<[number, number]>([0, 1000]);
   const [minRating, setMinRating] = useState(0);
   const [sort, setSort] = useState<SortOption>("relevance");
+
+  // Debounce search input
+  const debouncedSearch = useDebounce(searchInput, 500);
 
   // Calculate available categories from recommendations
   const categories = useMemo(() => {
@@ -71,8 +62,8 @@ export default function RecommendedProductsPage() {
     let list = recommendations;
 
     // Search filter
-    if (search) {
-      const searchLower = search.toLowerCase();
+    if (debouncedSearch) {
+      const searchLower = debouncedSearch.toLowerCase();
       list = list.filter(
         (rec) =>
           rec.product.name.toLowerCase().includes(searchLower) ||
@@ -122,7 +113,7 @@ export default function RecommendedProductsPage() {
     }
 
     return list;
-  }, [recommendations, search, category, price, minRating, sort]);
+  }, [recommendations, debouncedSearch, category, price, minRating, sort]);
 
   useEffect(() => {
     fetchRecommendations();
@@ -162,11 +153,11 @@ export default function RecommendedProductsPage() {
           totalProducts: data.totalProducts,
         });
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error("Error fetching recommendations:", err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
       toast.error("Failed to load recommendations", {
-        description: err.message,
+        description: err instanceof Error ? err.message : String(err),
       });
     } finally {
       setIsLoading(false);
@@ -229,9 +220,12 @@ export default function RecommendedProductsPage() {
           <section className="lg:col-span-9">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
-                <Card key={i} className="overflow-hidden flex flex-col">
+                <div
+                  key={i}
+                  className="border rounded-lg overflow-hidden flex flex-col"
+                >
                   <Skeleton className="h-56 w-full" />
-                  <CardContent className="pt-4 space-y-3 flex-1">
+                  <div className="pt-4 pb-4 px-4 space-y-3 flex-1">
                     <div className="space-y-2">
                       <Skeleton className="h-6 w-3/4" />
                       <div className="flex items-center justify-between">
@@ -247,11 +241,11 @@ export default function RecommendedProductsPage() {
                       <Skeleton className="h-5 w-24" />
                       <Skeleton className="h-5 w-16" />
                     </div>
-                  </CardContent>
-                  <CardFooter>
+                  </div>
+                  <div className="p-4 pt-0">
                     <Skeleton className="h-10 w-full" />
-                  </CardFooter>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </section>
@@ -318,7 +312,7 @@ export default function RecommendedProductsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <aside className="lg:col-span-3 space-y-5 lg:sticky lg:top-24 self-start border-r pr-5">
-          <SearchFilter value={search} onChange={setSearch} />
+          <SearchFilter value={searchInput} onChange={setSearchInput} />
           <CategoryFilter
             categories={categories}
             value={category}
@@ -343,91 +337,15 @@ export default function RecommendedProductsPage() {
                 (r) => r.product.id === rec.product.id
               );
               return (
-                <Card
+                <ProductCard
                   key={rec.product.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col pt-0"
-                >
-                  <div className="relative">
-                    <div className="absolute top-2 left-2 z-10 flex gap-2">
-                      <Badge className="bg-primary/90 backdrop-blur-sm">
-                        #{originalIndex + 1}
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-secondary/90 backdrop-blur-sm"
-                      >
-                        {rec.relevanceScore}% Match
-                      </Badge>
-                    </div>
-                    <div className="relative h-56 w-full">
-                      <Image
-                        src={rec.product.image}
-                        alt={rec.product.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-
-                  <CardContent className="pt-4 space-y-3 flex-1 px-0">
-                    <div className="px-4">
-                      <h3 className="font-semibold text-lg mb-1">
-                        {rec.product.name}
-                      </h3>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-2xl font-bold text-primary">
-                          ${rec.product.price}
-                        </span>
-                        <div className="flex items-center gap-1">
-                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm font-medium">
-                            {rec.product.rating}
-                          </span>
-                        </div>
-                      </div>
-                      <Badge variant="outline" className="mb-2">
-                        {rec.product.category}
-                      </Badge>
-                      <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem
-                          value="explanation"
-                          className="border-none"
-                        >
-                          <AccordionTrigger className="py-2 hover:no-underline">
-                            <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                              <Info className="h-4 w-4" />
-                              Why we recommend this
-                            </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="pt-2 pb-3">
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {rec.explanation}
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
-
-                    <div className="flex flex-wrap justify-start space-y-1">
-                      {rec.matchReasons.map((reason, idx) => (
-                        <Badge
-                          key={idx}
-                          variant="secondary"
-                          className="text-xs font-normal scale-90"
-                        >
-                          {reason}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-
-                  <CardFooter>
-                    <Button className="w-full">
-                      <ShoppingCart className="h-4 w-4 mr-2" />
-                      Add to Cart
-                    </Button>
-                  </CardFooter>
-                </Card>
+                  product={rec.product}
+                  rank={originalIndex + 1}
+                  relevanceScore={rec.relevanceScore}
+                  explanation={rec.explanation}
+                  matchReasons={rec.matchReasons}
+                  variant="recommendation"
+                />
               );
             })}
           </div>
@@ -442,7 +360,7 @@ export default function RecommendedProductsPage() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  setSearch("");
+                  setSearchInput("");
                   setCategory("all");
                   setPrice([minPrice, maxPrice]);
                   setMinRating(0);

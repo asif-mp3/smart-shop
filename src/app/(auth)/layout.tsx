@@ -22,7 +22,7 @@ export default function AuthLayout({
       fetch("/api/profile")
         .then((res) => res.json())
         .then((data) => {
-          if (data.profile?.onboardingCompleted) {
+          if (data?.onboardingCompleted) {
             router.push("/recommended");
           } else {
             router.push("/onboarding");
