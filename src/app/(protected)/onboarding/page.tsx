@@ -110,7 +110,7 @@ export default function OnboardingPage() {
         description: "Let's find products you'll love",
       });
 
-      router.push("/customized-products");
+      router.push("/recommended");
     } catch (error) {
       toast.error("Failed to save profile");
       console.error("Onboarding error:", error);

@@ -23,7 +23,7 @@ export default function AuthLayout({
         .then((res) => res.json())
         .then((data) => {
           if (data.profile?.onboardingCompleted) {
-            router.push("/customized-products");
+            router.push("/recommended");
           } else {
             router.push("/onboarding");
           }

@@ -69,9 +69,7 @@ export function Navbar() {
         <div
           className="flex items-center gap-2 cursor-pointer"
           onClick={() =>
-            router.push(
-              hasCompletedOnboarding ? "/customized-products" : "/products"
-            )
+            router.push(hasCompletedOnboarding ? "/recommended" : "/products")
           }
         >
           <Image
@@ -89,7 +87,7 @@ export function Navbar() {
             <>
               <Button
                 variant="link"
-                onClick={() => router.push("/customized-products")}
+                onClick={() => router.push("/recommended")}
                 className="hidden sm:flex"
               >
                 <Sparkles className="h-4 w-4" />
