@@ -3,6 +3,7 @@
 import { useSession, authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   Button,
   DropdownMenu,
@@ -14,11 +15,25 @@ import {
   Avatar,
   AvatarFallback,
 } from "@/components/ui";
-import { LogOut, User, ShoppingBag } from "lucide-react";
+import { LogOut, User, ShoppingBag, Sparkles } from "lucide-react";
 
 export function Navbar() {
   const { data: session } = useSession();
   const router = useRouter();
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+
+  useEffect(() => {
+    if (session) {
+      fetch("/api/profile")
+        .then((res) => res.json())
+        .then((data) => {
+          setHasCompletedOnboarding(data.profile?.onboardingCompleted || false);
+        })
+        .catch((err) => {
+          console.error("Error checking profile:", err);
+        });
+    }
+  }, [session]);
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -48,25 +63,36 @@ export function Navbar() {
   };
 
   return (
-    <nav className="border-b bg-white/50 backdrop-blur-3xl sticky top-0 z-50">
+    <nav className="border-b bg-white/50 backdrop-blur-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => router.push("/products")}
+          onClick={() => router.push(hasCompletedOnboarding ? "/customized-products" : "/products")}
         >
           <ShoppingBag className="h-6 w-6 text-primary" />
           <h1 className="text-xl font-bold">ShopSmart</h1>
         </div>
 
         <div className="flex items-center gap-4">
-          <Button
-            variant="link"
-            onClick={() => router.push("/products")}
-            className="hidden sm:flex"
-          >
-            <ShoppingBag className="h-4 w-4" />
-            Products
-          </Button>
+          {hasCompletedOnboarding ? (
+            <Button
+              variant="link"
+              onClick={() => router.push("/customized-products")}
+              className="hidden sm:flex"
+            >
+              <Sparkles className="h-4 w-4" />
+              For You
+            </Button>
+          ) : (
+            <Button
+              variant="link"
+              onClick={() => router.push("/products")}
+              className="hidden sm:flex"
+            >
+              <ShoppingBag className="h-4 w-4" />
+              Products
+            </Button>
+          )}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

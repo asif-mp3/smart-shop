@@ -3,8 +3,8 @@
 import { Navbar } from "@/components/layout";
 import { FullScreenLoader } from "@/components/loaders";
 import { useSession } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function ProtectedLayout({
   children,
@@ -13,6 +13,8 @@ export default function ProtectedLayout({
 }) {
   const { data: session, isPending } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
+  const [profileChecked, setProfileChecked] = useState(false);
 
   useEffect(() => {
     if (!isPending && !session) {
@@ -20,8 +22,30 @@ export default function ProtectedLayout({
     }
   }, [session, isPending, router]);
 
-  // Show loading while checking session
-  if (isPending) {
+  useEffect(() => {
+    // Check if user has completed onboarding (except for onboarding page itself)
+    if (session && !profileChecked && pathname !== "/onboarding") {
+      fetch("/api/profile")
+        .then((res) => res.json())
+        .then((data) => {
+          setProfileChecked(true);
+
+          // If no profile or onboarding not completed, redirect to onboarding
+          if (!data.profile || !data.profile.onboardingCompleted) {
+            router.push("/onboarding");
+          }
+        })
+        .catch((err) => {
+          console.error("Error checking profile:", err);
+          setProfileChecked(true);
+        });
+    } else if (session && pathname === "/onboarding") {
+      setProfileChecked(true);
+    }
+  }, [session, pathname, profileChecked, router]);
+
+  // Show loading while checking session and profile
+  if (isPending || (session && !profileChecked)) {
     return <FullScreenLoader />;
   }
 

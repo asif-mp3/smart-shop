@@ -3,7 +3,7 @@
 import { FullScreenLoader } from "@/components/loaders";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function AuthLayout({
   children,
@@ -12,15 +12,31 @@ export default function AuthLayout({
 }) {
   const { data: session, isPending } = useSession();
   const router = useRouter();
+  const [checkingProfile, setCheckingProfile] = useState(false);
 
   useEffect(() => {
-    if (!isPending && session) {
-      router.push("/products");
-    }
-  }, [session, isPending, router]);
+    if (!isPending && session && !checkingProfile) {
+      setCheckingProfile(true);
 
-  // Show loading while checking session
-  if (isPending) {
+      // Check if user has completed onboarding
+      fetch("/api/profile")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.profile?.onboardingCompleted) {
+            router.push("/customized-products");
+          } else {
+            router.push("/onboarding");
+          }
+        })
+        .catch((err) => {
+          console.error("Error checking profile:", err);
+          router.push("/onboarding");
+        });
+    }
+  }, [session, isPending, router, checkingProfile]);
+
+  // Show loading while checking session and profile
+  if (isPending || (session && !checkingProfile)) {
     return <FullScreenLoader />;
   }
 
