@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -15,8 +16,16 @@ const HomePage = () => {
     <div className="min-h-screen p-8">
       {/* Header */}
       <header className="max-w-7xl mx-auto mb-16">
-        <div className="mb-4">
+        <div className="flex items-center justify-between mb-4">
           <h1 className="text-4xl font-bold">Product Recommender</h1>
+          <div className="flex gap-4">
+            <Link href="/signin">
+              <Button variant="ghost">Sign In</Button>
+            </Link>
+            <Link href="/signup">
+              <Button variant="outline">Sign Up</Button>
+            </Link>
+          </div>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl">
           AI-powered product recommendations with intelligent explanations based
@@ -33,7 +42,7 @@ const HomePage = () => {
             </CardTitle>
             <CardDescription className="text-base">
               Our recommendation engine analyzes your behavior to suggest
-              products you'll love, with clear explanations for every
+              products you&apos;ll love, with clear explanations for every
               recommendation
             </CardDescription>
           </CardHeader>
@@ -65,7 +74,7 @@ const HomePage = () => {
               <CardTitle>AI Analysis</CardTitle>
               <CardDescription>
                 Our system analyzes your behavior and preferences to understand
-                what you're looking for
+                what you&apos;re looking for
               </CardDescription>
             </CardHeader>
           </Card>
@@ -123,7 +132,7 @@ const HomePage = () => {
             </CardTitle>
             <CardDescription className="text-base mb-6">
               Start exploring products and let our AI help you discover items
-              you'll love
+              you&apos;ll love
             </CardDescription>
           </CardHeader>
           <CardContent>
