@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
       .collection("userProfiles")
       .findOne({ userId: session.user.id });
 
-    return NextResponse.json(userProfile);
+    return NextResponse.json({ profile: userProfile });
   } catch (error) {
     console.error("Error fetching user profile:", error);
     return NextResponse.json(
@@ -164,7 +164,46 @@ export async function PATCH(request: NextRequest) {
       });
     }
 
-    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    // Handle profile update (edit preferences)
+    const profileData = {
+      gender: body.gender,
+      dateOfBirth: body.dateOfBirth ? new Date(body.dateOfBirth) : undefined,
+      address: body.address || {
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        country: "",
+      },
+      favoriteCategories: body.favoriteCategories || [],
+      priceRange: body.priceRange,
+      shoppingFrequency: body.shoppingFrequency,
+      interests: body.interests || [],
+      lifestyle: body.lifestyle,
+      clothingSize: body.clothingSize || "",
+      shoeSize: body.shoeSize || "",
+      subscribedToNewsletter: body.subscribedToNewsletter || false,
+      updatedAt: new Date(),
+    };
+
+    const result = await db
+      .collection("userProfiles")
+      .updateOne({ userId: session.user.id }, { $set: profileData });
+
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: "Profile not found" }, { status: 404 });
+    }
+
+    // Fetch updated profile
+    const updatedProfile = await db
+      .collection("userProfiles")
+      .findOne({ userId: session.user.id });
+
+    return NextResponse.json({
+      success: true,
+      message: "Profile updated successfully",
+      profile: updatedProfile,
+    });
   } catch (error) {
     console.error("Error updating profile:", error);
     return NextResponse.json(

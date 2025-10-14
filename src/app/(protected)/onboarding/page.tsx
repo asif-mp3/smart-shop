@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
@@ -34,6 +34,27 @@ export default function OnboardingPage() {
   const router = useRouter();
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
+  const [isCheckingProfile, setIsCheckingProfile] = useState(true);
+
+  // Check if user has already completed onboarding
+  useEffect(() => {
+    if (session?.user) {
+      fetch("/api/profile")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.profile && data.profile.onboardingCompleted) {
+            console.log("User already completed onboarding, redirecting...");
+            router.push("/recommended");
+          } else {
+            setIsCheckingProfile(false);
+          }
+        })
+        .catch((err) => {
+          console.error("Error checking profile:", err);
+          setIsCheckingProfile(false);
+        });
+    }
+  }, [session, router]);
 
   const [formData, setFormData] = useState({
     gender: "",
@@ -122,6 +143,18 @@ export default function OnboardingPage() {
   const handleSkip = () => {
     router.push("/products");
   };
+
+  // Show loading while checking if user already completed onboarding
+  if (isCheckingProfile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Sparkles className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse" />
+          <p className="text-muted-foreground">Checking your profile...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/5 py-12 px-4">

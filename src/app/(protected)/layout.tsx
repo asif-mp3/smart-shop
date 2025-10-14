@@ -28,11 +28,15 @@ export default function ProtectedLayout({
       fetch("/api/profile")
         .then((res) => res.json())
         .then((data) => {
+          console.log("Profile check data:", data);
           setProfileChecked(true);
 
           // If no profile or onboarding not completed, redirect to onboarding
-          if (!data || !data.onboardingCompleted) {
+          if (!data.profile || !data.profile.onboardingCompleted) {
+            console.log("Onboarding incomplete, redirecting...");
             router.push("/onboarding");
+          } else {
+            console.log("Onboarding completed, allowing access");
           }
         })
         .catch((err) => {

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
+import { useSession } from "@/lib/auth-client";
 import { Button, Badge, Skeleton, Separator } from "@/components/ui";
 import { Sparkles, TrendingUp } from "lucide-react";
 import { ProductRecommendation } from "@/types/recommendation";
@@ -20,13 +21,83 @@ import sampleRecommendations from "@/data/sample-recommendations.json";
 // Toggle this to switch between local data and API
 const USE_LOCAL_DATA = false;
 
+// Cache settings
+const CACHE_KEY = "ai-recommendations-cache";
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes in milliseconds
+
+interface CachedRecommendations {
+  recommendations: ProductRecommendation[];
+  stats: { totalFiltered: number; totalProducts: number };
+  timestamp: number;
+  userId: string;
+}
+
+// Helper functions for cache management
+const getCachedRecommendations = (
+  userId: string
+): CachedRecommendations | null => {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return null;
+
+    const data: CachedRecommendations = JSON.parse(cached);
+
+    // Check if cache is expired or for different user
+    const isExpired = Date.now() - data.timestamp > CACHE_DURATION;
+    const isDifferentUser = data.userId !== userId;
+
+    if (isExpired || isDifferentUser) {
+      localStorage.removeItem(CACHE_KEY);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error reading cache:", error);
+    localStorage.removeItem(CACHE_KEY);
+    return null;
+  }
+};
+
+const setCachedRecommendations = (
+  userId: string,
+  recommendations: ProductRecommendation[],
+  stats: { totalFiltered: number; totalProducts: number }
+) => {
+  try {
+    const cacheData: CachedRecommendations = {
+      recommendations,
+      stats,
+      timestamp: Date.now(),
+      userId,
+    };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+  } catch (error) {
+    console.error("Error writing cache:", error);
+  }
+};
+
+const clearCachedRecommendations = () => {
+  try {
+    localStorage.removeItem(CACHE_KEY);
+  } catch (error) {
+    console.error("Error clearing cache:", error);
+  }
+};
+
 export default function RecommendedProductsPage() {
+  const { data: session } = useSession();
   const [recommendations, setRecommendations] = useState<
     ProductRecommendation[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isStreaming, setIsStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({ totalFiltered: 0, totalProducts: 0 });
+  const [isCached, setIsCached] = useState(false);
+
+  // Ref to prevent duplicate fetches in React 18 Strict Mode
+  const hasFetchedRef = useRef(false);
 
   // Filter states
   const [searchInput, setSearchInput] = useState("");
@@ -116,12 +187,38 @@ export default function RecommendedProductsPage() {
   }, [recommendations, debouncedSearch, category, price, minRating, sort]);
 
   useEffect(() => {
+    // Prevent duplicate calls in React 18 Strict Mode
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     fetchRecommendations();
   }, []);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = async (forceRefresh = false) => {
+    if (!session?.user?.id) {
+      setIsLoading(false);
+      return;
+    }
+
+    // Check cache first (unless force refresh)
+    if (!forceRefresh) {
+      const cached = getCachedRecommendations(session.user.id);
+      if (cached) {
+        setRecommendations(cached.recommendations);
+        setStats(cached.stats);
+        setIsCached(true);
+        setIsLoading(false);
+        toast.success("Loaded cached recommendations", {
+          description: "Showing previously generated recommendations",
+        });
+        return;
+      }
+    }
+
+    setIsCached(false);
     setIsLoading(true);
     setError(null);
+    setRecommendations([]); // Clear previous recommendations
 
     try {
       if (USE_LOCAL_DATA) {
@@ -135,6 +232,7 @@ export default function RecommendedProductsPage() {
           totalFiltered: sampleRecommendations.totalFiltered,
           totalProducts: sampleRecommendations.totalProducts,
         });
+        setIsLoading(false);
       } else {
         const response = await fetch("/api/recommendations", {
           method: "POST",
@@ -145,13 +243,79 @@ export default function RecommendedProductsPage() {
           throw new Error(errorData.error || "Failed to fetch recommendations");
         }
 
-        const data = await response.json();
-        console.log(data);
-        setRecommendations(data.recommendations);
-        setStats({
-          totalFiltered: data.totalFiltered,
-          totalProducts: data.totalProducts,
-        });
+        // Handle streaming response
+        setIsStreaming(true);
+        const reader = response.body?.getReader();
+        const decoder = new TextDecoder();
+
+        if (!reader) {
+          throw new Error("No response body");
+        }
+
+        let buffer = "";
+        const tempRecommendations: ProductRecommendation[] = [];
+        let currentStats = { totalFiltered: 0, totalProducts: 0 };
+
+        while (true) {
+          const { done, value } = await reader.read();
+
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n\n");
+
+          // Keep the last incomplete line in the buffer
+          buffer = lines.pop() || "";
+
+          for (const line of lines) {
+            if (line.startsWith("data: ")) {
+              const data = line.slice(6);
+
+              if (data === "[DONE]") {
+                console.log("Streaming complete");
+                setIsLoading(false);
+                setIsStreaming(false);
+                continue;
+              }
+
+              try {
+                const parsed = JSON.parse(data);
+                console.log("Received message:", parsed.type);
+
+                if (parsed.type === "metadata") {
+                  currentStats = {
+                    totalFiltered: parsed.totalFiltered,
+                    totalProducts: parsed.totalProducts,
+                  };
+                  setStats(currentStats);
+                } else if (parsed.type === "recommendation") {
+                  console.log(
+                    `Received recommendation #${
+                      tempRecommendations.length + 1
+                    }: ${parsed.data.product.name}`
+                  );
+                  tempRecommendations.push(parsed.data);
+                  // Update recommendations incrementally
+                  setRecommendations([...tempRecommendations]);
+                  setIsLoading(false); // Show UI as soon as first recommendation arrives
+                } else if (parsed.type === "error") {
+                  throw new Error(parsed.error);
+                }
+              } catch (parseError) {
+                console.error("Parse error:", parseError);
+              }
+            }
+          }
+        }
+
+        // Cache the final recommendations
+        if (session?.user?.id && tempRecommendations.length > 0) {
+          setCachedRecommendations(
+            session.user.id,
+            tempRecommendations,
+            currentStats
+          );
+        }
       }
     } catch (err) {
       console.error("Error fetching recommendations:", err);
@@ -159,8 +323,8 @@ export default function RecommendedProductsPage() {
       toast.error("Failed to load recommendations", {
         description: err instanceof Error ? err.message : String(err),
       });
-    } finally {
       setIsLoading(false);
+      setIsStreaming(false);
     }
   };
 
@@ -263,7 +427,7 @@ export default function RecommendedProductsPage() {
             Unable to Load Recommendations
           </h2>
           <p className="text-muted-foreground mb-6">{error}</p>
-          <Button onClick={fetchRecommendations}>Try Again</Button>
+          <Button onClick={() => fetchRecommendations(true)}>Try Again</Button>
         </div>
       </div>
     );
@@ -299,7 +463,7 @@ export default function RecommendedProductsPage() {
           Personalized product recommendations based on your preferences (
           {filtered.length} items)
         </p>
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-4 items-center">
           <Badge variant="secondary">
             <TrendingUp className="h-3 w-3 mr-1" />
             {filtered.length} of {recommendations.length} Products
@@ -307,6 +471,19 @@ export default function RecommendedProductsPage() {
           <Badge variant="outline">
             AI Filtered from {stats.totalFiltered} matches
           </Badge>
+          {isCached && (
+            <Badge variant="secondary" className="bg-blue-500/10 text-blue-600">
+              Cached
+            </Badge>
+          )}
+          {isStreaming && (
+            <Badge
+              variant="secondary"
+              className="bg-green-500/10 text-green-600 animate-pulse"
+            >
+              🔴 Live Streaming
+            </Badge>
+          )}
         </div>
       </div>
 
@@ -372,11 +549,27 @@ export default function RecommendedProductsPage() {
             </div>
           )}
 
-          <div className="mt-8 text-center">
-            <Button variant="outline" onClick={fetchRecommendations}>
+          <div className="mt-8 text-center flex gap-4 justify-center">
+            <Button
+              variant="outline"
+              onClick={() => fetchRecommendations(true)}
+            >
               <Sparkles className="h-4 w-4 mr-2" />
-              Refresh Recommendations
+              Generate New Recommendations
             </Button>
+            {isCached && (
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  clearCachedRecommendations();
+                  setIsCached(false);
+                  toast.info("Cache cleared");
+                }}
+                size="sm"
+              >
+                Clear Cache
+              </Button>
+            )}
           </div>
         </section>
       </div>
