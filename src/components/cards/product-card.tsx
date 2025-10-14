@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import { Star, ShoppingCart, Info } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Star, ShoppingCart, Info, Link2 } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -43,9 +47,19 @@ export function ProductCard({
   variant = "default",
 }: ProductCardProps) {
   const isRecommendation = variant === "recommendation";
+  const router = useRouter();
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col group pt-0">
+    <Card
+      className="relative overflow-hidden hover:shadow-lg transition-shadow flex flex-col group pt-0 cursor-pointer"
+      onClick={() => router.push(`/products/${product.id}`)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ")
+          router.push(`/products/${product.id}`);
+      }}
+    >
       <div className="relative">
         {/* Badges on top of image */}
         <div className="absolute top-2 right-2 z-10 flex gap-2">
@@ -72,7 +86,7 @@ export function ProductCard({
         </div>
 
         {/* Product Image */}
-        <div className="relative h-56 w-full overflow-hidden">
+        <div className="relative h-56 w-full overflow-hidden block">
           <Image
             src={product.image}
             alt={product.name}
@@ -82,12 +96,12 @@ export function ProductCard({
         </div>
       </div>
 
-      <CardContent className="pt-4 space-y-3 flex-1 flex flex-col">
+      <CardContent className="pt-4 space-y-3 flex-1 flex flex-col relative z-10">
         <div className="flex-1">
           {/* Product Name */}
-          <h3 className="font-semibold text-lg mb-1 line-clamp-2">
+          <div className="font-semibold text-lg mb-1 line-clamp-2">
             {product.name}
-          </h3>
+          </div>
 
           {/* Description (only for non-recommendation cards) */}
           {!isRecommendation && (
@@ -99,7 +113,7 @@ export function ProductCard({
           {/* Price and Rating */}
           <div className="flex items-center justify-between mb-2">
             <span className="text-2xl font-bold text-primary">
-              ${product.price}
+              ${product.price.toFixed(2)}
             </span>
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -148,10 +162,28 @@ export function ProductCard({
         )}
       </CardContent>
 
-      <CardFooter>
-        <Button className="w-full mt-auto" disabled={!product.inStock}>
+      <CardFooter className="relative z-10 flex gap-2">
+        <Button
+          className="w-1/2"
+          disabled={!product.inStock}
+          onClick={(e) => {
+            e.stopPropagation();
+            // TODO: integrate cart action
+          }}
+        >
           <ShoppingCart className="h-4 w-4 mr-2" />
           {product.inStock ? "Add to Cart" : "Out of Stock"}
+        </Button>
+        <Button
+          variant="secondary"
+          className="w-1/2"
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/products/${product.id}`);
+          }}
+        >
+          <Link2 className="h-4 w-4 mr-2" />
+          Visit
         </Button>
       </CardFooter>
     </Card>

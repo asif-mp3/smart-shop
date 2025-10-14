@@ -83,35 +83,17 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           {session ? (
             <>
-              {hasCompletedOnboarding ? (
-                <>
-                  <Button
-                    variant="link"
-                    onClick={() => router.push("/recommended")}
-                    className="hidden sm:flex"
-                  >
-                    <Sparkles className="h-4 w-4" />
-                    Recommended
-                  </Button>
-                  <Button
-                    variant="link"
-                    onClick={() => router.push("/products")}
-                    className="hidden sm:flex"
-                  >
-                    <ShoppingBag className="h-4 w-4" />
-                    All Products
-                  </Button>
-                </>
-              ) : (
-                <Button
-                  variant="link"
-                  onClick={() => router.push("/products")}
-                  className="hidden sm:flex"
-                >
-                  <ShoppingBag className="h-4 w-4" />
-                  Products
-                </Button>
-              )}
+              <Button
+                variant="link"
+                onClick={() => router.push("/recommended")}
+              >
+                <Sparkles className="h-4 w-4" />
+                Recommended
+              </Button>
+              <Button variant="link" onClick={() => router.push("/products")}>
+                <ShoppingBag className="h-4 w-4" />
+                All Products
+              </Button>
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -157,6 +139,17 @@ export function Navbar() {
             </>
           ) : (
             <>
+              <Button
+                variant="link"
+                onClick={() => router.push("/recommended")}
+              >
+                <Sparkles className="h-4 w-4" />
+                Recommended
+              </Button>
+              <Button variant="link" onClick={() => router.push("/products")}>
+                <ShoppingBag className="h-4 w-4" />
+                All Products
+              </Button>
               <Button variant="outline" onClick={() => router.push("/signin")}>
                 Sign In
               </Button>
