@@ -75,14 +75,14 @@ graph TD
   B --> C[Pages & Layouts]
   C --> D[UI Components]
   C --> E[Filters/Search]
-  B --> F[/api/profile]
-  B --> G[/api/recommendations]
-  B --> H[/api/recommendations/product]
-  B --> I[/api/auth/[...all]]
+  B --> F["/api/profile"]
+  B --> G["/api/recommendations"]
+  B --> H["/api/recommendations/product"]
+  B --> I["/api/auth/...all"]
   F --> J[(MongoDB)]
   G --> J
-  H --> K[products.json]
-  G --> L[Google Gemini]
+  H --> K["products.json"]
+  G --> L["Google Gemini"]
 ```
 
 ### Recommendation Flow (SSE)
