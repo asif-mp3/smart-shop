@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { Star, ShoppingCart, Info, Link2 } from "lucide-react";
 import {
   Card,
@@ -48,6 +50,25 @@ export function ProductCard({
 }: ProductCardProps) {
   const isRecommendation = variant === "recommendation";
   const router = useRouter();
+  const [isAdding, setIsAdding] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const [addToCartCount, setAddToCartCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let ignore = false;
+    fetch(`/api/interactions/stats?productId=${product.id}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!ignore && data && typeof data.addToCartCount === "number") {
+          setAddToCartCount(data.addToCartCount);
+        }
+      })
+      .catch(() => {})
+      .finally(() => {});
+    return () => {
+      ignore = true;
+    };
+  }, [product.id]);
 
   return (
     <Card
@@ -125,6 +146,13 @@ export function ProductCard({
           <Badge variant="outline" className="mb-2">
             {product.category}
           </Badge>
+
+          {addToCartCount !== null && addToCartCount > 0 && (
+            <p className="text-xs text-muted-foreground">
+              Added to cart by {addToCartCount}{" "}
+              {addToCartCount === 1 ? "person" : "people"}
+            </p>
+          )}
         </div>
 
         {/* AI Explanation (only for recommendation cards) */}
@@ -165,14 +193,40 @@ export function ProductCard({
       <CardFooter className="relative z-10 flex gap-2">
         <Button
           className="w-1/2"
-          disabled={!product.inStock}
+          disabled={!product.inStock || isAdding}
           onClick={(e) => {
             e.stopPropagation();
-            // TODO: integrate cart action
+            if (isAdded) return;
+            setIsAdding(true);
+            // Log add_to_cart interaction (best-effort)
+            fetch(`/api/interactions`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                productId: product.id,
+                type: "add_to_cart",
+              }),
+            })
+              .then(() => {
+                setIsAdded(true);
+                toast.success("Added to cart", {
+                  description: product.name,
+                });
+              })
+              .catch(() => {
+                toast.error("Failed to add to cart");
+              })
+              .finally(() => setIsAdding(false));
           }}
         >
           <ShoppingCart className="h-4 w-4 mr-2" />
-          {product.inStock ? "Add to Cart" : "Out of Stock"}
+          {!product.inStock
+            ? "Out of Stock"
+            : isAdding
+            ? "Adding..."
+            : isAdded
+            ? "Added"
+            : "Add to Cart"}
         </Button>
         <Button
           variant="secondary"

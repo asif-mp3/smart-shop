@@ -55,6 +55,12 @@ export default function ProductDetailPage() {
       }
     }
     fetchRecs();
+    // Log view interaction (non-blocking)
+    fetch(`/api/interactions`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productId: params.id, type: "view" }),
+    }).catch(() => {});
   }, [params.id]);
 
   return (
