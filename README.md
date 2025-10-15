@@ -3,7 +3,7 @@
 <img src="./public/logo.png" alt="ShopSmart Logo" height="80" />
 
 # ShopSmart — Personalized Product Recommendations (Frontend)
-
+# Click here for the Deployed website - https://smart-shop-steel.vercel.app
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
