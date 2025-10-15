@@ -181,10 +181,21 @@ npm run lint
 3. Start dev server: `npm run dev`
 4. Visit `http://localhost:3000`
 
-Optional: seed/create `userProfiles` collection in your MongoDB before hitting protected pages.
-
 ---
 
 ## Screenshots
+<div align="center">
+  <h4>Recommendations based on number of add to cart clicks</h4>
+  <img src="https://github.com/user-attachments/assets/05cf6297-0f9b-4d5a-a065-62fcdc0bc604" alt="Recommendations based on number of add to cart clicks" />
+</div>
+
+
+<div align="center">
+  <h4>LLM based recommendation with user profile, favorites as criteria</h4>
+</div>
+
+
+https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
+
 
 ---
