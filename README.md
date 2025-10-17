@@ -107,6 +107,34 @@ sequenceDiagram
 ```
 
 ---
+### Content and Collaborative based Filtering
+sequenceDiagram
+  participant U as User
+  participant FE as Next.js UI
+  participant RH_AI as /api/recommendations
+  participant RH_CB as /api/recommendations/product
+  participant DB as MongoDB
+  participant LLM as Google Gemini
+
+  %% User clicks product card
+  U->>FE: Click on a product card
+  FE->>RH_CB: POST /api/recommendations/product { productId }
+  RH_CB->>DB: Fetch product details and similar items (Content-Based)
+  DB-->>RH_CB: Return product + related products
+  RH_CB-->>FE: Send product details + related products
+  FE-->>U: Render product page with full description
+  FE-->>U: Display content-based related products
+
+  %% User clicks "Get AI Recommendations" (collaborative + profile-based)
+  U->>FE: Click "Get Recommendations"
+  FE->>RH_AI: POST /api/recommendations
+  RH_AI->>DB: Fetch user profile, search & interaction history
+  RH_AI->>LLM: Stream recommendations prompt (Collaborative + Preference-based)
+  LLM-->>RH_AI: Token stream
+  loop As chunks arrive
+    RH_AI-->>FE: SSE data: metadata | recommendation | [DONE]
+  end
+  FE-->>U: Render AI-curated product recommendations with explanations
 
 ## Features
 
