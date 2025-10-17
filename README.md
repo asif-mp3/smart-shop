@@ -108,8 +108,7 @@ sequenceDiagram
 
 ---
 ### Content and Collaborative based Filtering
-```
-mermaid
+```mermaid
 sequenceDiagram
   participant U as User
   participant FE as Next.js UI
@@ -137,7 +136,7 @@ sequenceDiagram
     RH_AI-->>FE: SSE data: metadata | recommendation | [DONE]
   end
   FE-->>U: Render AI-curated product recommendations with explanations
-
+```
 ## Features
 
 - **Home**: Search hero, quick stats, recent searches (for logged‑in users)
