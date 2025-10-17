@@ -108,6 +108,8 @@ sequenceDiagram
 
 ---
 ### Content and Collaborative based Filtering
+```
+mermaid
 sequenceDiagram
   participant U as User
   participant FE as Next.js UI
