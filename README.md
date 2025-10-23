@@ -23,13 +23,6 @@ Elegant Next.js app that showcases AI‑assisted product recommendations, protec
 
 ---
 
-### Highlights
-
-- **Personalized recs**: Streams AI explanations for curated products based on profile and history
-- **Modern UI**: Radix primitives + bespoke UI kit, dark‑mode ready styles via Tailwind v4
-- **Auth & profiles**: Email/password auth (Better Auth), profile onboarding, and protected routes
-- **Fast filters**: Debounced search, category/price/rating/sort, stock toggle
-- **API routes**: `/api/auth`, `/api/profile`, `/api/recommendations`, `/api/recommendations/product`
 
 ### Tech Stack
 
@@ -44,7 +37,6 @@ Elegant Next.js app that showcases AI‑assisted product recommendations, protec
 ---
 
 ## Project Structure
-
 ```text
 src/
   app/
@@ -68,7 +60,6 @@ src/
 ```
 
 ### App Architecture (Frontend)
-
 ```mermaid
 graph TD
   A[User] --> B[Next.js App Router]
@@ -86,7 +77,6 @@ graph TD
 ```
 
 ### Recommendation Flow (SSE)
-
 ```mermaid
 sequenceDiagram
   participant U as User
@@ -183,7 +173,6 @@ All routes are within the Next.js app and expect valid session cookies where not
 ## Environment Variables
 
 Create a `.env.local` at the project root:
-
 ```bash
 MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
 GEMINI_API_KEY=your_gemini_api_key
@@ -193,7 +182,6 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ---
 
 ## Scripts
-
 ```bash
 npm run dev
 npm run build
@@ -213,18 +201,85 @@ npm run lint
 ---
 
 ## Screenshots
-<div align="center">
-  <h4>Recommendations based on number of add to cart clicks</h4>
-  <img src="https://github.com/user-attachments/assets/05cf6297-0f9b-4d5a-a065-62fcdc0bc604" alt="Recommendations based on number of add to cart clicks" />
-</div>
-
 
 <div align="center">
-  <h4>LLM based recommendation with user profile, favorites as criteria</h4>
+  <h3>Homepage with Search Hero</h3>
+  <img src="./example-images/s1.png" alt="Homepage" width="800" />
 </div>
 
+<br/>
+
+<div align="center">
+  <h3>User Authentication - Sign In</h3>
+  <img src="./example-images/s2.png" alt="Sign In Page" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>User Onboarding Flow</h3>
+  <img src="./example-images/s3.png" alt="Onboarding" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>Product Catalog with Filters</h3>
+  <img src="./example-images/s4.png" alt="Product Catalog" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>Product Details Page</h3>
+  <img src="./example-images/s5.png" alt="Product Details" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>User Profile Dashboard</h3>
+  <img src="./example-images/s6.png" alt="Profile Page" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>Recommendations based on number of add to cart clicks</h3>
+  <img src="./example-images/s7.png" alt="Recommendations based on add to cart clicks" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>LLM based recommendation with user profile, favorites as criteria</h3>
+</div>
 
 https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
 
+<br/>
 
 ---
+
+## Demo Video
+
+<div align="center">
+  <h3>Full Project Demonstration</h3>
+  <video src="./Demonstration Video/Project_Demo.mp4" controls width="800">
+    Your browser does not support the video tag.
+  </video>
+  
+  <p><em>Complete walkthrough of ShopSmart features including authentication, onboarding, product browsing, and AI-powered recommendations.</em></p>
+</div>
+
+---
+
+## License
+
+This project is part of an interview task and is for demonstration purposes.
+
+---
+
+<div align="center">
+  Made by Mohamed Asif M 22BCE1634
+</div>
