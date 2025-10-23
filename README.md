@@ -265,13 +265,11 @@ https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
 
 <div align="center">
   <h3>Full Project Demonstration</h3>
-  <video src="./Demonstration Video/Project_Demo.mp4" controls width="800">
-    Your browser does not support the video tag.
-  </video>
+  
+  **[📹 Watch Full Demo Video](./Demonstration%20Video/Project_Demo.mp4)**
   
   <p><em>Complete walkthrough of ShopSmart features including authentication, onboarding, product browsing, and AI-powered recommendations.</em></p>
 </div>
-
 ---
 
 ## License
