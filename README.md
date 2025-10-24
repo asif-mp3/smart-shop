@@ -6,6 +6,16 @@
 
 ### 🌐 Deployed site: [smart-shop-steel.vercel.app](https://smart-shop-steel.vercel.app)
 
+## Demo Video
+
+<div align="center">
+https://drive.google.com/file/d/1-ZLrei39lp6f4QmkXjdE8uKB__6tye04/view?usp=sharing
+<br/>
+<p><em>Complete walkthrough of all features</em></p>
+</div>
+
+---
+
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
@@ -212,17 +222,6 @@ sequenceDiagram
    </div>
 ---
 
-## Demo Video
-
-<div align="center">
-https://drive.google.com/file/d/1-ZLrei39lp6f4QmkXjdE8uKB__6tye04/view?usp=sharing
-https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
-
-<br/>
-<p><em>Complete walkthrough of all features</em></p>
-</div>
-
----
 ## Environment Variables
 
 Create a `.env.local` at the project root:
