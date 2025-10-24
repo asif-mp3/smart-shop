@@ -164,12 +164,6 @@ sequenceDiagram
 
 <br/>
 
-<div align="center">
-  <img src="./example-images/s4.png" alt="Homepage" width="800" />
-  <p><strong>Homepage with Search</strong><br/>
-  Quick stats and recent searches for logged-in users</p>
-</div>
-
 <br/>
 
 <div align="center">
@@ -181,7 +175,7 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="./example-images/s3.png" alt="Onboarding" width="800" />
+  <img src="./example-images/s2.png" alt="Onboarding" width="800" />
   <p><strong>Onboarding Flow</strong><br/>
   Capture preferences: categories, price range, lifestyle, and interests</p>
 </div>
@@ -189,7 +183,8 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="./example-images/s6.png" alt="Profile" width="800" />
+  <img src="./example-images/s9.png" alt="Profile" width="800" />
+  <img src="./example-images/s3.png" alt="Profile" width="800" />
   <p><strong>Profile Dashboard</strong><br/>
   View saved preferences and activity history</p>
 </div>
@@ -197,7 +192,8 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="./example-images/s4.png" alt="Products" width="800" />
+  <img src="./example-images/s7.png" alt="Products" width="800" />
+  <img src="./example-images/s10.png" alt="Products" width="800" />
   <p><strong>Product Catalog</strong><br/>
   Browse with rich filters and responsive layout</p>
 </div>
@@ -205,7 +201,7 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="./example-images/s5.png" alt="Product Details" width="800" />
+  <img src="./example-images/s11.png" alt="Product Details" width="800" />
   <p><strong>Product Details</strong><br/>
   Full description with content-based similar items</p>
 </div>
@@ -213,7 +209,7 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="./example-images/s7.png" alt="Recommendations" width="800" />
+  <img src="./example-images/s4.png" alt="Recommendations" width="800" />
   <p><strong>Search Behavior Patterns</strong><br/>
   Shows previous searches and personalized suggestions based on interactions</p>
 </div>
@@ -221,15 +217,14 @@ sequenceDiagram
 <br/>
 
 <div align="center">
+  <img src="./example-images/s14.png" alt="Recommendations" width="800" />
+  <img src="./example-images/s13.png" alt="Recommendations" width="800" />
   <h3>AI Recommendations with LLM Explanations</h3>
   <p>Click "Get Recommendations" to trigger SSE streaming with relevance scores and "Why this product?" justifications</p>
 </div>
 
-https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
-
-<br/>
-
 <div align="center">
+  <img src="./example-images/s12.png" alt="Recommendations" width="800" />
   <p><strong>Interaction API</strong><br/>
   Clicking "Add to Cart" triggers POST request — check network tab for 200 OK response with payload</p>
 </div>
@@ -242,6 +237,9 @@ https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
   
 **[📹 Watch Full Demo Video](./Demonstration%20Video/Project_Demo.mp4)**
 
+https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
+
+<br/>
 <p><em>Complete walkthrough of all features</em></p>
 </div>
 
