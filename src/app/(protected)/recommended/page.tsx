@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useMemo, useRef, useCallback } from "react";
 import { useSession } from "@/lib/auth-client";
 import { Button, Badge, Skeleton, Separator } from "@/components/ui";
 import { Sparkles, TrendingUp } from "lucide-react";
@@ -186,147 +186,152 @@ export default function RecommendedProductsPage() {
     return list;
   }, [recommendations, debouncedSearch, category, price, minRating, sort]);
 
+  const fetchRecommendations = useCallback(
+    async (forceRefresh = false) => {
+      if (!session?.user?.id) {
+        setIsLoading(false);
+        return;
+      }
+
+      // Check cache first (unless force refresh)
+      if (!forceRefresh) {
+        const cached = getCachedRecommendations(session.user.id);
+        if (cached) {
+          setRecommendations(cached.recommendations);
+          setStats(cached.stats);
+          setIsCached(true);
+          setIsLoading(false);
+          toast.success("Loaded cached recommendations", {
+            description: "Showing previously generated recommendations",
+          });
+          return;
+        }
+      }
+
+      setIsCached(false);
+      setIsLoading(true);
+      setError(null);
+      setRecommendations([]); // Clear previous recommendations
+
+      try {
+        if (USE_LOCAL_DATA) {
+          // Simulate API delay for realistic loading experience
+          await new Promise((resolve) => setTimeout(resolve, 800));
+
+          setRecommendations(
+            sampleRecommendations.recommendations as ProductRecommendation[]
+          );
+          setStats({
+            totalFiltered: sampleRecommendations.totalFiltered,
+            totalProducts: sampleRecommendations.totalProducts,
+          });
+          setIsLoading(false);
+        } else {
+          const response = await fetch("/api/recommendations", {
+            method: "POST",
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(
+              errorData.error || "Failed to fetch recommendations"
+            );
+          }
+
+          // Handle streaming response
+          setIsStreaming(true);
+          const reader = response.body?.getReader();
+          const decoder = new TextDecoder();
+
+          if (!reader) {
+            throw new Error("No response body");
+          }
+
+          let buffer = "";
+          const tempRecommendations: ProductRecommendation[] = [];
+          let currentStats = { totalFiltered: 0, totalProducts: 0 };
+
+          while (true) {
+            const { done, value } = await reader.read();
+
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split("\n\n");
+
+            // Keep the last incomplete line in the buffer
+            buffer = lines.pop() || "";
+
+            for (const line of lines) {
+              if (line.startsWith("data: ")) {
+                const data = line.slice(6);
+
+                if (data === "[DONE]") {
+                  console.log("Streaming complete");
+                  setIsLoading(false);
+                  setIsStreaming(false);
+                  continue;
+                }
+
+                try {
+                  const parsed = JSON.parse(data);
+                  console.log("Received message:", parsed.type);
+
+                  if (parsed.type === "metadata") {
+                    currentStats = {
+                      totalFiltered: parsed.totalFiltered,
+                      totalProducts: parsed.totalProducts,
+                    };
+                    setStats(currentStats);
+                  } else if (parsed.type === "recommendation") {
+                    console.log(
+                      `Received recommendation #${
+                        tempRecommendations.length + 1
+                      }: ${parsed.data.product.name}`
+                    );
+                    tempRecommendations.push(parsed.data);
+                    // Update recommendations incrementally
+                    setRecommendations([...tempRecommendations]);
+                    setIsLoading(false); // Show UI as soon as first recommendation arrives
+                  } else if (parsed.type === "error") {
+                    throw new Error(parsed.error);
+                  }
+                } catch (parseError) {
+                  console.error("Parse error:", parseError);
+                }
+              }
+            }
+          }
+
+          // Cache the final recommendations
+          if (session?.user?.id && tempRecommendations.length > 0) {
+            setCachedRecommendations(
+              session.user.id,
+              tempRecommendations,
+              currentStats
+            );
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching recommendations:", err);
+        setError(err instanceof Error ? err.message : String(err));
+        toast.error("Failed to load recommendations", {
+          description: err instanceof Error ? err.message : String(err),
+        });
+        setIsLoading(false);
+        setIsStreaming(false);
+      }
+    },
+    [session?.user?.id]
+  );
+
   useEffect(() => {
     // Prevent duplicate calls in React 18 Strict Mode
     if (hasFetchedRef.current) return;
     hasFetchedRef.current = true;
 
     fetchRecommendations();
-  }, []);
-
-  const fetchRecommendations = async (forceRefresh = false) => {
-    if (!session?.user?.id) {
-      setIsLoading(false);
-      return;
-    }
-
-    // Check cache first (unless force refresh)
-    if (!forceRefresh) {
-      const cached = getCachedRecommendations(session.user.id);
-      if (cached) {
-        setRecommendations(cached.recommendations);
-        setStats(cached.stats);
-        setIsCached(true);
-        setIsLoading(false);
-        toast.success("Loaded cached recommendations", {
-          description: "Showing previously generated recommendations",
-        });
-        return;
-      }
-    }
-
-    setIsCached(false);
-    setIsLoading(true);
-    setError(null);
-    setRecommendations([]); // Clear previous recommendations
-
-    try {
-      if (USE_LOCAL_DATA) {
-        // Simulate API delay for realistic loading experience
-        await new Promise((resolve) => setTimeout(resolve, 800));
-
-        setRecommendations(
-          sampleRecommendations.recommendations as ProductRecommendation[]
-        );
-        setStats({
-          totalFiltered: sampleRecommendations.totalFiltered,
-          totalProducts: sampleRecommendations.totalProducts,
-        });
-        setIsLoading(false);
-      } else {
-        const response = await fetch("/api/recommendations", {
-          method: "POST",
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || "Failed to fetch recommendations");
-        }
-
-        // Handle streaming response
-        setIsStreaming(true);
-        const reader = response.body?.getReader();
-        const decoder = new TextDecoder();
-
-        if (!reader) {
-          throw new Error("No response body");
-        }
-
-        let buffer = "";
-        const tempRecommendations: ProductRecommendation[] = [];
-        let currentStats = { totalFiltered: 0, totalProducts: 0 };
-
-        while (true) {
-          const { done, value } = await reader.read();
-
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n\n");
-
-          // Keep the last incomplete line in the buffer
-          buffer = lines.pop() || "";
-
-          for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              const data = line.slice(6);
-
-              if (data === "[DONE]") {
-                console.log("Streaming complete");
-                setIsLoading(false);
-                setIsStreaming(false);
-                continue;
-              }
-
-              try {
-                const parsed = JSON.parse(data);
-                console.log("Received message:", parsed.type);
-
-                if (parsed.type === "metadata") {
-                  currentStats = {
-                    totalFiltered: parsed.totalFiltered,
-                    totalProducts: parsed.totalProducts,
-                  };
-                  setStats(currentStats);
-                } else if (parsed.type === "recommendation") {
-                  console.log(
-                    `Received recommendation #${
-                      tempRecommendations.length + 1
-                    }: ${parsed.data.product.name}`
-                  );
-                  tempRecommendations.push(parsed.data);
-                  // Update recommendations incrementally
-                  setRecommendations([...tempRecommendations]);
-                  setIsLoading(false); // Show UI as soon as first recommendation arrives
-                } else if (parsed.type === "error") {
-                  throw new Error(parsed.error);
-                }
-              } catch (parseError) {
-                console.error("Parse error:", parseError);
-              }
-            }
-          }
-        }
-
-        // Cache the final recommendations
-        if (session?.user?.id && tempRecommendations.length > 0) {
-          setCachedRecommendations(
-            session.user.id,
-            tempRecommendations,
-            currentStats
-          );
-        }
-      }
-    } catch (err) {
-      console.error("Error fetching recommendations:", err);
-      setError(err instanceof Error ? err.message : String(err));
-      toast.error("Failed to load recommendations", {
-        description: err instanceof Error ? err.message : String(err),
-      });
-      setIsLoading(false);
-      setIsStreaming(false);
-    }
-  };
+  }, [fetchRecommendations]);
 
   if (isLoading) {
     return (

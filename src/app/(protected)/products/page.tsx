@@ -1,6 +1,6 @@
 "use client";
 
-import {  Separator } from "@/components/ui";
+import { Separator } from "@/components/ui";
 import productsData from "@/data/products.json";
 import { useMemo, useState } from "react";
 import {
@@ -96,7 +96,15 @@ export default function ProductsPage() {
     }
 
     return list;
-  }, [debouncedSearch, category, price, minRating, inStockOnly, sort]);
+  }, [
+    products,
+    debouncedSearch,
+    category,
+    price,
+    minRating,
+    inStockOnly,
+    sort,
+  ]);
 
   return (
     <main className="container mx-auto px-4 py-8">

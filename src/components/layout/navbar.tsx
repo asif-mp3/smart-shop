@@ -21,7 +21,7 @@ import Image from "next/image";
 export function Navbar() {
   const { data: session } = useSession();
   const router = useRouter();
-  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+  const [_hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
 
   useEffect(() => {
     if (session) {
