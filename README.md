@@ -151,84 +151,65 @@ sequenceDiagram
 - `POST /api/recommendations/product`
   - Body: `{ productId: string, limit?: number }`
   - Returns: `{ data: Product[] }`
-
 ---
+# Features & Screenshots
 
-## Features & Screenshots
+1. **Test AI Recommendations Without Login**  
+   Paste products JSON and user preferences to instantly preview LLM-powered suggestions.  
+   <div align="center">
+     <img src="./example-images/s8.png" alt="Test LLM" width="800" />
+   </div>
 
-<div align="center">
-  <img src="./example-images/s8.png" alt="Test LLM" width="800" />
-  <p><strong>Test AI Recommendations Without Login</strong><br/>
-  Paste products JSON and user preferences to instantly preview LLM-powered suggestions</p>
-</div>
+2. **Authentication**  
+   Secure login and signup with Better Auth.  
+   <div align="center">
+     <img src="./example-images/s1.png" alt="Sign In" width="800" />
+   </div>
 
-<br/>
+3. **Onboarding Flow**  
+   Capture preferences: categories, price range, lifestyle, and interests.  
+   <div align="center">
+     <img src="./example-images/s2.png" alt="Onboarding" width="800" />
+   </div>
 
-<br/>
+4. **Profile Dashboard**  
+   View saved preferences and activity history.  
+   <div align="center">
+     <img src="./example-images/s9.png" alt="Profile" width="800" />
+     <img src="./example-images/s3.png" alt="Profile" width="800" />
+   </div>
 
-<div align="center">
-  <img src="./example-images/s1.png" alt="Sign In" width="800" />
-  <p><strong>Authentication</strong><br/>
-  Secure login and signup with Better Auth</p>
-</div>
+5. **Product Catalog**  
+   Browse with rich filters and responsive layout.  
+   <div align="center">
+     <img src="./example-images/s7.png" alt="Products" width="800" />
+     <img src="./example-images/s10.png" alt="Products" width="800" />
+   </div>
 
-<br/>
+6. **Product Details**  
+   Full description with content-based similar items.  
+   <div align="center">
+     <img src="./example-images/s11.png" alt="Product Details" width="800" />
+   </div>
 
-<div align="center">
-  <img src="./example-images/s2.png" alt="Onboarding" width="800" />
-  <p><strong>Onboarding Flow</strong><br/>
-  Capture preferences: categories, price range, lifestyle, and interests</p>
-</div>
+7. **Search Behavior Patterns**  
+   Shows previous searches and personalized suggestions based on interactions.  
+   <div align="center">
+     <img src="./example-images/s4.png" alt="Search Behavior" width="800" />
+   </div>
 
-<br/>
+8. **AI Recommendations with LLM Explanations**  
+   Click "Get Recommendations" to trigger SSE streaming with relevance scores and "Why this product?" justifications.  
+   <div align="center">
+     <img src="./example-images/s14.png" alt="AI Recommendations" width="800" />
+     <img src="./example-images/s13.png" alt="AI Recommendations" width="800" />
+   </div>
 
-<div align="center">
-  <img src="./example-images/s9.png" alt="Profile" width="800" />
-  <img src="./example-images/s3.png" alt="Profile" width="800" />
-  <p><strong>Profile Dashboard</strong><br/>
-  View saved preferences and activity history</p>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="./example-images/s7.png" alt="Products" width="800" />
-  <img src="./example-images/s10.png" alt="Products" width="800" />
-  <p><strong>Product Catalog</strong><br/>
-  Browse with rich filters and responsive layout</p>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="./example-images/s11.png" alt="Product Details" width="800" />
-  <p><strong>Product Details</strong><br/>
-  Full description with content-based similar items</p>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="./example-images/s4.png" alt="Recommendations" width="800" />
-  <p><strong>Search Behavior Patterns</strong><br/>
-  Shows previous searches and personalized suggestions based on interactions</p>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="./example-images/s14.png" alt="Recommendations" width="800" />
-  <img src="./example-images/s13.png" alt="Recommendations" width="800" />
-  <h3>AI Recommendations with LLM Explanations</h3>
-  <p>Click "Get Recommendations" to trigger SSE streaming with relevance scores and "Why this product?" justifications</p>
-</div>
-
-<div align="center">
-  <img src="./example-images/s12.png" alt="Recommendations" width="800" />
-  <p><strong>Interaction API</strong><br/>
-  Clicking "Add to Cart" triggers POST request — check network tab for 200 OK response with payload</p>
-</div>
-
+9. **Interaction API**  
+   Clicking "Add to Cart" triggers POST request — check network tab for 200 OK response with payload.  
+   <div align="center">
+     <img src="./example-images/s12.png" alt="Interaction API" width="800" />
+   </div>
 ---
 
 ## Demo Video
