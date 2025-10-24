@@ -2,8 +2,10 @@
 
 <img src="./public/logo.png" alt="ShopSmart Logo" height="80" />
 
-# ShopSmart — Personalized Product Recommendations (Frontend)
-# Click here for the Deployed website - https://smart-shop-steel.vercel.app
+# ShopSmart — Personalized Product Recommendations
+
+### 🌐 [Live Demo](https://smart-shop-steel.vercel.app)
+
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
@@ -15,16 +17,13 @@
 ![Node](https://img.shields.io/badge/Node->=18.18-339933?logo=nodedotjs&logoColor=white)
 ![Status](https://img.shields.io/badge/Project-Interview%20Task-informational)
 
-<br/>
-
 Elegant Next.js app that showcases AI‑assisted product recommendations, protected routes, onboarding‑driven personalization, and a polished UI component system. This README documents only the frontend app. The `Smart-shop-Backend/` folder is intentionally ignored for this task.
 
 </div>
 
 ---
 
-
-### Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 (App Router, Server/Route Handlers)
 - **Language**: TypeScript
@@ -59,7 +58,7 @@ src/
   types/                    # TS types for profile/recommendation
 ```
 
-### App Architecture (Frontend)
+### App Architecture
 ```mermaid
 graph TD
   A[User] --> B[Next.js App Router]
@@ -96,8 +95,7 @@ sequenceDiagram
   FE-->>U: Render products + explanations progressively
 ```
 
----
-### Content and Collaborative based Filtering
+### Content and Collaborative Filtering
 ```mermaid
 sequenceDiagram
   participant U as User
@@ -127,27 +125,15 @@ sequenceDiagram
   end
   FE-->>U: Render AI-curated product recommendations with explanations
 ```
-## Features
-
-- **Home**: Search hero, quick stats, recent searches (for logged‑in users)
-- **Products**: Rich filtering, sorting, responsive card grid
-- **Recommended**: AI‑curated list streamed via SSE with per‑item justifications
-- **Auth**: Email/password sign‑in/up, session-aware navbar
-- **Onboarding**: Captures preferences (categories, price range, lifestyle, etc.)
-- **Profile**: Persisted profile; search history updates via `PATCH /api/profile`
 
 ---
 
 ## API (Frontend Route Handlers)
 
-All routes are within the Next.js app and expect valid session cookies where noted.
-
 ### Auth
-
 - `GET | POST /api/auth/[...all]` – Better Auth handler (email/password enabled)
 
 ### Profile
-
 - `GET /api/profile` – returns `{ profile }`, requires session
 - `POST /api/profile` – create/update onboarding payload; sets `onboardingCompleted: true`
 - `PATCH /api/profile` – partial updates and actions
@@ -155,7 +141,6 @@ All routes are within the Next.js app and expect valid session cookies where not
   - or profile fields (gender, address, favoriteCategories, priceRange, interests, lifestyle, etc.)
 
 ### Recommendations (AI, SSE)
-
 - `POST /api/recommendations` – requires session
   - Streams `text/event-stream` with events shaped as:
     - `{"type":"metadata","totalFiltered":number,"totalProducts":number}`
@@ -163,7 +148,6 @@ All routes are within the Next.js app and expect valid session cookies where not
     - `[DONE]` when finished
 
 ### Product‑similar Recommendations (content‑based)
-
 - `POST /api/recommendations/product`
   - Body: `{ productId: string, limit?: number }`
   - Returns: `{ data: Product[] }`
@@ -183,93 +167,114 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 ## Scripts
 ```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
 ```
 
 ---
 
 ## Quickstart
 
-1. Install deps: `npm i` (or npm/yarn)
+1. Install dependencies: `npm install`
 2. Add `.env.local` (see above)
 3. Start dev server: `npm run dev`
 4. Visit `http://localhost:3000`
 
 ---
 
-## Screenshots
+## Features & Screenshots
 
 <div align="center">
-  <h3>Homepage with Search Hero</h3>
+  <img src="./example-images/test-panel.png" alt="Test LLM" width="800" />
+  <p><strong>Test AI Recommendations Without Login</strong><br/>
+  Paste products JSON and user preferences to instantly preview LLM-powered suggestions</p>
+</div>
+
+<br/>
+
+<div align="center">
   <img src="./example-images/s1.png" alt="Homepage" width="800" />
+  <p><strong>Homepage with Search</strong><br/>
+  Quick stats and recent searches for logged-in users</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>User Authentication - Sign In</h3>
-  <img src="./example-images/s2.png" alt="Sign In Page" width="800" />
+  <img src="./example-images/s2.png" alt="Sign In" width="800" />
+  <p><strong>Authentication</strong><br/>
+  Secure login and signup with Better Auth</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>User Onboarding Flow</h3>
   <img src="./example-images/s3.png" alt="Onboarding" width="800" />
+  <p><strong>Onboarding Flow</strong><br/>
+  Capture preferences: categories, price range, lifestyle, and interests</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>Product Catalog with Filters</h3>
-  <img src="./example-images/s4.png" alt="Product Catalog" width="800" />
+  <img src="./example-images/s6.png" alt="Profile" width="800" />
+  <p><strong>Profile Dashboard</strong><br/>
+  View saved preferences and activity history</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>Product Details Page</h3>
+  <img src="./example-images/s4.png" alt="Products" width="800" />
+  <p><strong>Product Catalog</strong><br/>
+  Browse with rich filters and responsive layout</p>
+</div>
+
+<br/>
+
+<div align="center">
   <img src="./example-images/s5.png" alt="Product Details" width="800" />
+  <p><strong>Product Details</strong><br/>
+  Full description with content-based similar items</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>User Profile Dashboard</h3>
-  <img src="./example-images/s6.png" alt="Profile Page" width="800" />
+  <img src="./example-images/s7.png" alt="Recommendations" width="800" />
+  <p><strong>Search Behavior Patterns</strong><br/>
+  Shows previous searches and personalized suggestions based on interactions</p>
 </div>
 
 <br/>
 
 <div align="center">
-  <h3>Recommendations based on number of add to cart clicks</h3>
-  <img src="./example-images/s7.png" alt="Recommendations based on add to cart clicks" width="800" />
-</div>
-
-<br/>
-
-<div align="center">
-  <h3>LLM based recommendation with user profile, favorites as criteria</h3>
+  <h3>AI Recommendations with LLM Explanations</h3>
+  <p>Click "Get Recommendations" to trigger SSE streaming with relevance scores and "Why this product?" justifications</p>
 </div>
 
 https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
 
 <br/>
 
+<div align="center">
+  <p><strong>Interaction API</strong><br/>
+  Clicking "Add to Cart" triggers POST request — check network tab for 200 OK response with payload</p>
+</div>
+
 ---
 
 ## Demo Video
 
 <div align="center">
-  <h3>Full Project Demonstration</h3>
   
-  **[📹 Watch Full Demo Video](./Demonstration%20Video/Project_Demo.mp4)**
-  
-  <p><em>Complete walkthrough of ShopSmart features including authentication, onboarding, product browsing, and AI-powered recommendations.</em></p>
+**[📹 Watch Full Demo Video](./Demonstration%20Video/Project_Demo.mp4)**
+
+<p><em>Complete walkthrough of all features</em></p>
 </div>
+
 ---
 
 ## License
