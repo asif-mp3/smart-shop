@@ -4,7 +4,7 @@
 
 # ShopSmart — Personalized Product Recommendations
 
-### 🌐 [Live Demo](https://smart-shop-steel.vercel.app)
+### 🌐 [Click here for the deployed site!!](https://smart-shop-steel.vercel.app)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
