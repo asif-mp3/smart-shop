@@ -154,40 +154,10 @@ sequenceDiagram
 
 ---
 
-## Environment Variables
-
-Create a `.env.local` at the project root:
-```bash
-MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
-GEMINI_API_KEY=your_gemini_api_key
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-```
-
----
-
-## Scripts
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run start    # Start production server
-npm run lint     # Run ESLint
-```
-
----
-
-## Quickstart
-
-1. Install dependencies: `npm install`
-2. Add `.env.local` (see above)
-3. Start dev server: `npm run dev`
-4. Visit `http://localhost:3000`
-
----
-
 ## Features & Screenshots
 
 <div align="center">
-  <img src="./example-images/test-panel.png" alt="Test LLM" width="800" />
+  <img src="./example-images/s8.png" alt="Test LLM" width="800" />
   <p><strong>Test AI Recommendations Without Login</strong><br/>
   Paste products JSON and user preferences to instantly preview LLM-powered suggestions</p>
 </div>
@@ -195,7 +165,7 @@ npm run lint     # Run ESLint
 <br/>
 
 <div align="center">
-  <img src="./example-images/s1.png" alt="Homepage" width="800" />
+  <img src="./example-images/s4.png" alt="Homepage" width="800" />
   <p><strong>Homepage with Search</strong><br/>
   Quick stats and recent searches for logged-in users</p>
 </div>
@@ -203,7 +173,7 @@ npm run lint     # Run ESLint
 <br/>
 
 <div align="center">
-  <img src="./example-images/s2.png" alt="Sign In" width="800" />
+  <img src="./example-images/s1.png" alt="Sign In" width="800" />
   <p><strong>Authentication</strong><br/>
   Secure login and signup with Better Auth</p>
 </div>
@@ -276,6 +246,36 @@ https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
 </div>
 
 ---
+## Environment Variables
+
+Create a `.env.local` at the project root:
+```bash
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
+GEMINI_API_KEY=your_gemini_api_key
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
+
+---
+
+## Scripts
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+---
+
+## Quickstart
+
+1. Install dependencies: `npm install`
+2. Add `.env.local` (see above)
+3. Start dev server: `npm run dev`
+4. Visit `http://localhost:3000`
+
+---
+
 
 ## License
 
