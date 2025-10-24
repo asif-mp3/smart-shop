@@ -4,7 +4,7 @@
 
 # ShopSmart — Personalized Product Recommendations
 
-### 🌐 [Click here for the deployed site!!](https://smart-shop-steel.vercel.app)
+### 🌐 Deployed site: [smart-shop-steel.vercel.app](https://smart-shop-steel.vercel.app)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
@@ -215,9 +215,7 @@ sequenceDiagram
 ## Demo Video
 
 <div align="center">
-  
-**[📹 Watch Full Demo Video](./Demonstration%20Video/Project_Demo.mp4)**
-
+https://drive.google.com/file/d/1-ZLrei39lp6f4QmkXjdE8uKB__6tye04/view?usp=sharing
 https://github.com/user-attachments/assets/ec446a03-a516-4395-8340-4cc7c81ce034
 
 <br/>
