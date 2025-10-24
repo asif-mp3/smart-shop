@@ -27,8 +27,7 @@ https://drive.google.com/file/d/1-ZLrei39lp6f4QmkXjdE8uKB__6tye04/view?usp=shari
 ![Node](https://img.shields.io/badge/Node->=18.18-339933?logo=nodedotjs&logoColor=white)
 ![Status](https://img.shields.io/badge/Project-Interview%20Task-informational)
 
-Elegant Next.js app that showcases AI‑assisted product recommendations, protected routes, onboarding‑driven personalization, and a polished UI component system. This README documents only the frontend app. The `Smart-shop-Backend/` folder is intentionally ignored for this task.
-
+Elegant Next.js app that showcases AI‑assisted product recommendations, protected routes, onboarding‑driven personalization, and a polished UI component system.
 </div>
 
 ---
