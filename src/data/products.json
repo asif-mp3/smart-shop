@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "1",
+    "name": "Wireless Bluetooth Headphones",
+    "category": "Electronics",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+    "description": "Premium wireless headphones with active noise cancellation",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "2",
+    "name": "Smart Watch Series 5",
+    "category": "Electronics",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+    "description": "Advanced fitness tracking and health monitoring",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "3",
+    "name": "Running Shoes Pro",
+    "category": "Sports",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
+    "description": "Professional running shoes with advanced cushioning",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "4",
+    "name": "Leather Laptop Bag",
+    "category": "Accessories",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+    "description": "Premium leather laptop bag with multiple compartments",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "5",
+    "name": "4K Ultra HD Camera",
+    "category": "Electronics",
+    "price": 899.99,
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&h=500&fit=crop",
+    "description": "Professional 4K camera with image stabilization",
+    "rating": 4.9,
+    "inStock": true
+  },
+  {
+    "id": "6",
+    "name": "Yoga Mat Premium",
+    "category": "Sports",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500&h=500&fit=crop",
+    "description": "Eco-friendly yoga mat with excellent grip",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "7",
+    "name": "Coffee Maker Deluxe",
+    "category": "Home",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=500&h=500&fit=crop",
+    "description": "Programmable coffee maker with thermal carafe",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "8",
+    "name": "Designer Sunglasses",
+    "category": "Accessories",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop",
+    "description": "UV protection designer sunglasses",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "9",
+    "name": "Mechanical Keyboard RGB",
+    "category": "Electronics",
+    "price": 159.99,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=500&fit=crop",
+    "description": "RGB mechanical gaming keyboard with custom switches",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "10",
+    "name": "Organic Cotton T-Shirt",
+    "category": "Clothing",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
+    "description": "100% organic cotton premium t-shirt",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "11",
+    "name": "Portable Power Bank",
+    "category": "Electronics",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=500&h=500&fit=crop",
+    "description": "20000mAh portable charger with fast charging",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "12",
+    "name": "Stainless Steel Water Bottle",
+    "category": "Sports",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=500&fit=crop",
+    "description": "Insulated water bottle keeps drinks cold for 24 hours",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "13",
+    "name": "Gaming Mouse Pro",
+    "category": "Electronics",
+    "price": 69.99,
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=500&fit=crop",
+    "description": "High precision gaming mouse with RGB lighting",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "14",
+    "name": "Denim Jacket Classic",
+    "category": "Clothing",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&h=500&fit=crop",
+    "description": "Classic denim jacket with modern fit",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "15",
+    "name": "Air Purifier Smart",
+    "category": "Home",
+    "price": 249.99,
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&h=500&fit=crop",
+    "description": "Smart air purifier with HEPA filter",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "16",
+    "name": "Wireless Earbuds Pro",
+    "category": "Electronics",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&h=500&fit=crop",
+    "description": "True wireless earbuds with premium sound quality",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "17",
+    "name": "Backpack Travel Pro",
+    "category": "Accessories",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop",
+    "description": "Large capacity travel backpack with USB charging port",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "18",
+    "name": "Electric Toothbrush",
+    "category": "Personal Care",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=500&h=500&fit=crop",
+    "description": "Sonic electric toothbrush with smart timer",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "19",
+    "name": "Desk Lamp LED",
+    "category": "Home",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&h=500&fit=crop",
+    "description": "Adjustable LED desk lamp with USB charging",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "20",
+    "name": "Protein Powder Premium",
+    "category": "Sports",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&h=500&fit=crop",
+    "description": "Whey protein isolate with amazing taste",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "21",
+    "name": "Smartphone Stand Wireless",
+    "category": "Electronics",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=500&h=500&fit=crop",
+    "description": "Wireless charging phone stand with fast charge",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "22",
+    "name": "Canvas Sneakers",
+    "category": "Clothing",
+    "price": 54.99,
+    "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&h=500&fit=crop",
+    "description": "Comfortable canvas sneakers for everyday wear",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "23",
+    "name": "Blender High Speed",
+    "category": "Home",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=500&h=500&fit=crop",
+    "description": "Professional blender for smoothies and more",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "24",
+    "name": "Wall Clock Modern",
+    "category": "Home",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=500&h=500&fit=crop",
+    "description": "Silent modern wall clock with minimalist design",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "25",
+    "name": "Resistance Bands Set",
+    "category": "Sports",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=500&h=500&fit=crop",
+    "description": "Set of 5 resistance bands for home workouts",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "26",
+    "name": "Digital Photo Frame",
+    "category": "Electronics",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop",
+    "description": "WiFi digital photo frame with cloud sync",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "27",
+    "name": "Hiking Boots Waterproof",
+    "category": "Sports",
+    "price": 139.99,
+    "image": "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=500&h=500&fit=crop",
+    "description": "Waterproof hiking boots with ankle support",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "28",
+    "name": "Cooking Knife Set",
+    "category": "Home",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1593618998160-e34014e67546?w=500&h=500&fit=crop",
+    "description": "Professional chef knife set with storage block",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "29",
+    "name": "Tablet 10 Inch",
+    "category": "Electronics",
+    "price": 349.99,
+    "image": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=500&fit=crop",
+    "description": "10-inch tablet with high-resolution display",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "30",
+    "name": "Wool Winter Scarf",
+    "category": "Clothing",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=500&h=500&fit=crop",
+    "description": "Soft wool scarf for cold winter days",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "31",
+    "name": "USB-C Hub Adapter",
+    "category": "Electronics",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=500&h=500&fit=crop",
+    "description": "7-in-1 USB-C hub with HDMI and card reader",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "32",
+    "name": "Bath Towel Set Luxury",
+    "category": "Home",
+    "price": 69.99,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+    "description": "6-piece luxury bath towel set",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "33",
+    "name": "Dumbbells Adjustable",
+    "category": "Sports",
+    "price": 189.99,
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&h=500&fit=crop",
+    "description": "Adjustable dumbbells 5-52.5 lbs per hand",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "34",
+    "name": "Reading Glasses Blue Light",
+    "category": "Accessories",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=500&h=500&fit=crop",
+    "description": "Blue light blocking reading glasses",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "35",
+    "name": "Cordless Vacuum Cleaner",
+    "category": "Home",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=500&h=500&fit=crop",
+    "description": "Powerful cordless vacuum with long battery life",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "36",
+    "name": "Polo Shirt Classic",
+    "category": "Clothing",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&h=500&fit=crop",
+    "description": "Classic fit polo shirt in various colors",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "37",
+    "name": "External SSD 1TB",
+    "category": "Electronics",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&h=500&fit=crop",
+    "description": "Ultra-fast external SSD with USB-C",
+    "rating": 4.9,
+    "inStock": true
+  },
+  {
+    "id": "38",
+    "name": "Face Moisturizer SPF",
+    "category": "Personal Care",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop",
+    "description": "Daily face moisturizer with SPF 30",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "39",
+    "name": "Plant Pot Ceramic Set",
+    "category": "Home",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=500&h=500&fit=crop",
+    "description": "Set of 3 ceramic plant pots with drainage",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "40",
+    "name": "Jump Rope Speed",
+    "category": "Sports",
+    "price": 19.99,
+    "image": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=500&h=500&fit=crop",
+    "description": "Professional speed jump rope for cardio",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "41",
+    "name": "Webcam HD 1080p",
+    "category": "Electronics",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=500&h=500&fit=crop",
+    "description": "Full HD webcam with built-in microphone",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "42",
+    "name": "Wallet Leather Bifold",
+    "category": "Accessories",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500&h=500&fit=crop",
+    "description": "Genuine leather bifold wallet with RFID blocking",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "43",
+    "name": "Electric Kettle Glass",
+    "category": "Home",
+    "price": 54.99,
+    "image": "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=500&h=500&fit=crop",
+    "description": "Glass electric kettle with temperature control",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "44",
+    "name": "Sweatshirt Hoodie",
+    "category": "Clothing",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop",
+    "description": "Comfortable hoodie with kangaroo pocket",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "45",
+    "name": "Monitor 27 Inch 4K",
+    "category": "Electronics",
+    "price": 449.99,
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=500&fit=crop",
+    "description": "27-inch 4K UHD monitor with HDR",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "46",
+    "name": "Foam Roller Exercise",
+    "category": "Sports",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=500&h=500&fit=crop",
+    "description": "High-density foam roller for muscle recovery",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "47",
+    "name": "Candle Set Aromatherapy",
+    "category": "Home",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=500&h=500&fit=crop",
+    "description": "Set of 4 scented aromatherapy candles",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "48",
+    "name": "Drone with Camera",
+    "category": "Electronics",
+    "price": 499.99,
+    "image": "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=500&fit=crop",
+    "description": "GPS drone with 4K camera and gimbal",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "49",
+    "name": "Baseball Cap Adjustable",
+    "category": "Accessories",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
+    "description": "Adjustable baseball cap with UV protection",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "50",
+    "name": "Rice Cooker Digital",
+    "category": "Home",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?w=500&h=500&fit=crop",
+    "description": "Digital rice cooker with multiple cooking modes",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "51",
+    "name": "Wireless Gaming Controller",
+    "category": "Electronics",
+    "price": 69.99,
+    "image": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=500&h=500&fit=crop",
+    "description": "Ergonomic wireless controller with long battery life",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "52",
+    "name": "Leather Wallet Bifold",
+    "category": "Accessories",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=500&h=500&fit=crop",
+    "description": "Premium leather wallet with multiple card slots",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "53",
+    "name": "Instant Pot Pressure Cooker",
+    "category": "Home",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=500&h=500&fit=crop",
+    "description": "Multi-functional pressure cooker with 7 cooking modes",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "54",
+    "name": "Running Jacket Waterproof",
+    "category": "Sports",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop",
+    "description": "Lightweight waterproof jacket for outdoor activities",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "55",
+    "name": "Portable Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop",
+    "description": "360° sound with waterproof design",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "56",
+    "name": "Ceramic Dinner Set",
+    "category": "Home",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=500&h=500&fit=crop",
+    "description": "16-piece ceramic dinner set for 4 people",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "57",
+    "name": "Fitness Tracker Band",
+    "category": "Sports",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&h=500&fit=crop",
+    "description": "Track steps, heart rate, and sleep patterns",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "58",
+    "name": "Leather Belt Classic",
+    "category": "Accessories",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&h=500&fit=crop",
+    "description": "Genuine leather belt with reversible buckle",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "59",
+    "name": "Standing Desk Converter",
+    "category": "Home",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=500&h=500&fit=crop",
+    "description": "Adjustable standing desk converter with keyboard tray",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "60",
+    "name": "Tennis Racket Pro",
+    "category": "Sports",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=500&h=500&fit=crop",
+    "description": "Professional tennis racket with carbon fiber frame",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "61",
+    "name": "Noise Cancelling Earbuds",
+    "category": "Electronics",
+    "price": 179.99,
+    "image": "https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=500&h=500&fit=crop",
+    "description": "Active noise cancelling with premium audio quality",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "62",
+    "name": "Cashmere Sweater",
+    "category": "Clothing",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&h=500&fit=crop",
+    "description": "Luxury cashmere sweater in various colors",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "63",
+    "name": "Air Fryer Digital",
+    "category": "Home",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?w=500&h=500&fit=crop",
+    "description": "Large capacity air fryer with digital controls",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "64",
+    "name": "Basketball Official Size",
+    "category": "Sports",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&h=500&fit=crop",
+    "description": "Official size basketball with superior grip",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "65",
+    "name": "Crossbody Bag Leather",
+    "category": "Accessories",
+    "price": 69.99,
+    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=500&fit=crop",
+    "description": "Stylish leather crossbody bag with adjustable strap",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "66",
+    "name": "Robot Vacuum Cleaner",
+    "category": "Home",
+    "price": 349.99,
+    "image": "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=500&h=500&fit=crop",
+    "description": "Smart robot vacuum with mapping technology",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "67",
+    "name": "Wireless Charging Pad",
+    "category": "Electronics",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1532354058425-ba7ccc7e4a24?w=500&h=500&fit=crop",
+    "description": "Fast wireless charging pad for multiple devices",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "68",
+    "name": "Chino Pants Slim Fit",
+    "category": "Clothing",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=500&fit=crop",
+    "description": "Slim fit chino pants in multiple colors",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "69",
+    "name": "Espresso Machine",
+    "category": "Home",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=500&h=500&fit=crop",
+    "description": "Professional espresso machine with milk frother",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "70",
+    "name": "Yoga Block Set",
+    "category": "Sports",
+    "price": 19.99,
+    "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500&h=500&fit=crop",
+    "description": "Set of 2 yoga blocks with carrying strap",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "71",
+    "name": "Smart Doorbell Camera",
+    "category": "Electronics",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&h=500&fit=crop",
+    "description": "WiFi doorbell with HD video and two-way audio",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "72",
+    "name": "Silk Tie Collection",
+    "category": "Accessories",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1588359348347-9bc6cbbb689e?w=500&h=500&fit=crop",
+    "description": "Set of 3 premium silk ties",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "73",
+    "name": "Memory Foam Pillow",
+    "category": "Home",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&h=500&fit=crop",
+    "description": "Ergonomic memory foam pillow for better sleep",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "74",
+    "name": "Soccer Ball Pro",
+    "category": "Sports",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500&h=500&fit=crop",
+    "description": "Professional soccer ball with enhanced durability",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "75",
+    "name": "Laptop Sleeve 15 inch",
+    "category": "Accessories",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&h=500&fit=crop",
+    "description": "Padded laptop sleeve with extra pockets",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "76",
+    "name": "Smart Light Bulbs Set",
+    "category": "Electronics",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500&h=500&fit=crop",
+    "description": "Set of 4 WiFi smart light bulbs with color changing",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "77",
+    "name": "Winter Coat Puffer",
+    "category": "Clothing",
+    "price": 159.99,
+    "image": "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=500&h=500&fit=crop",
+    "description": "Warm puffer coat with hood for winter",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "78",
+    "name": "Food Processor",
+    "category": "Home",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=500&h=500&fit=crop",
+    "description": "Multi-function food processor with 12 cup capacity",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "79",
+    "name": "Golf Club Set",
+    "category": "Sports",
+    "price": 499.99,
+    "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=500&h=500&fit=crop",
+    "description": "Complete golf club set with bag for beginners",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "80",
+    "name": "USB Flash Drive 128GB",
+    "category": "Electronics",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=500&h=500&fit=crop",
+    "description": "High-speed USB 3.0 flash drive",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "81",
+    "name": "Designer Handbag",
+    "category": "Accessories",
+    "price": 249.99,
+    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop",
+    "description": "Luxury designer handbag with gold hardware",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "id": "82",
+    "name": "Electric Kettle Stainless",
+    "category": "Home",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=500&h=500&fit=crop",
+    "description": "Stainless steel electric kettle with auto shut-off",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "83",
+    "name": "Cycling Helmet",
+    "category": "Sports",
+    "price": 69.99,
+    "image": "https://images.unsplash.com/photo-1557187666-4fd70cf76254?w=500&h=500&fit=crop",
+    "description": "Lightweight cycling helmet with adjustable fit",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "84",
+    "name": "Graphic T-Shirt",
+    "category": "Clothing",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&h=500&fit=crop",
+    "description": "Cotton graphic t-shirt with modern designs",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "id": "85",
+    "name": "Ring Doorbell Video",
+    "category": "Electronics",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&h=500&fit=crop",
+    "description": "Video doorbell with motion detection",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "86",
+    "name": "Area Rug Modern",
+    "category": "Home",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1600166898405-da9535204843?w=500&h=500&fit=crop",
+    "description": "Modern design area rug 8x10 feet",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "87",
+    "name": "Skateboard Complete",
+    "category": "Sports",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1547447134-cd3f5c716030?w=500&h=500&fit=crop",
+    "description": "Complete skateboard ready to ride",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "88",
+    "name": "Wireless Mouse Ergonomic",
+    "category": "Electronics",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=500&fit=crop",
+    "description": "Ergonomic wireless mouse with 6 buttons",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "89",
+    "name": "Wristwatch Analog",
+    "category": "Accessories",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500&h=500&fit=crop",
+    "description": "Classic analog wristwatch with leather strap",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "90",
+    "name": "Duvet Cover Set Queen",
+    "category": "Home",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=500&fit=crop",
+    "description": "Queen size duvet cover set with pillow shams",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "91",
+    "name": "Badminton Racket Set",
+    "category": "Sports",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=500&h=500&fit=crop",
+    "description": "Set of 2 badminton rackets with shuttlecocks",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "92",
+    "name": "Portable Projector",
+    "category": "Electronics",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=500&h=500&fit=crop",
+    "description": "Mini portable projector with WiFi connectivity",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "93",
+    "name": "Dress Shirt Formal",
+    "category": "Clothing",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=500&fit=crop",
+    "description": "Formal dress shirt in wrinkle-free fabric",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "id": "94",
+    "name": "Massage Gun Deep Tissue",
+    "category": "Personal Care",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&h=500&fit=crop",
+    "description": "Deep tissue massage gun with multiple heads",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "95",
+    "name": "Throw Pillows Set",
+    "category": "Home",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&h=500&fit=crop",
+    "description": "Set of 4 decorative throw pillows",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "id": "96",
+    "name": "Punching Bag Heavy",
+    "category": "Sports",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&h=500&fit=crop",
+    "description": "Heavy punching bag with mounting hardware",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "97",
+    "name": "Smart Thermostat",
+    "category": "Electronics",
+    "price": 179.99,
+    "image": "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=500&h=500&fit=crop",
+    "description": "WiFi smart thermostat with voice control",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "id": "98",
+    "name": "Boots Ankle Leather",
+    "category": "Clothing",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500&h=500&fit=crop",
+    "description": "Stylish leather ankle boots for all seasons",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "id": "99",
+    "name": "Hair Dryer Professional",
+    "category": "Personal Care",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=500&h=500&fit=crop",
+    "description": "Professional hair dryer with ionic technology",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "id": "100",
+    "name": "Curtains Blackout Set",
+    "category": "Home",
+    "price": 54.99,
+    "image": "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=500&h=500&fit=crop",
+    "description": "Blackout curtains set for bedroom 2 panels",
+    "rating": 4.5,
+    "inStock": true
+  }
+]

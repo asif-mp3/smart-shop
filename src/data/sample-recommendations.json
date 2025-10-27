@@ -1,0 +1,303 @@
+{
+  "recommendations": [
+    {
+      "product": {
+        "id": "3",
+        "name": "Running Shoes Pro",
+        "category": "Sports",
+        "price": 129.99,
+        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
+        "description": "Professional running shoes with advanced cushioning",
+        "rating": 4.6,
+        "inStock": true
+      },
+      "explanation": "Akkilesh, these professional running shoes are perfect for your active lifestyle and interest in Fitness & Health. Their advanced cushioning will support you during your Sports & Outdoors activities, aligning perfectly with your mid-range preference for quality gear.",
+      "relevanceScore": 98,
+      "matchReasons": [
+        "Favorite category (Sports)",
+        "Interest (Fitness & Health)",
+        "Interest (Sports & Outdoors)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "20",
+        "name": "Protein Powder Premium",
+        "category": "Sports",
+        "price": 59.99,
+        "image": "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&h=500&fit=crop",
+        "description": "Whey protein isolate with amazing taste",
+        "rating": 4.6,
+        "inStock": true
+      },
+      "explanation": "As someone focused on Fitness & Health, this premium whey protein isolate is an excellent choice to support your weekly fitness regimen. It aligns perfectly with your \"Sports\" category interest and offers great value within your preferred price range.",
+      "relevanceScore": 97,
+      "matchReasons": [
+        "Interest (Fitness & Health)",
+        "Favorite category (Sports)",
+        "Price preference (Mid-range)",
+        "Shopping frequency (Weekly)"
+      ]
+    },
+    {
+      "product": {
+        "id": "1",
+        "name": "Wireless Bluetooth Headphones",
+        "category": "Electronics",
+        "price": 79.99,
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+        "description": "Premium wireless headphones with active noise cancellation",
+        "rating": 4.5,
+        "inStock": true
+      },
+      "explanation": "These premium wireless headphones are ideal for your Electronics interest and active lifestyle, perfect for workouts or casual listening. With active noise cancellation, they enhance your fitness routine and align with your mid-range budget for quality tech.",
+      "relevanceScore": 96,
+      "matchReasons": [
+        "Favorite category (Electronics)",
+        "Interest (Fitness & Health)",
+        "Lifestyle (Casual)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "16",
+        "name": "Wireless Earbuds Pro",
+        "category": "Electronics",
+        "price": 129.99,
+        "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&h=500&fit=crop",
+        "description": "True wireless earbuds with premium sound quality",
+        "rating": 4.8,
+        "inStock": true
+      },
+      "explanation": "For your love of Electronics and an on-the-go lifestyle, these true wireless earbuds offer premium sound quality, perfect for music during your fitness activities or daily commutes. They fit well within your mid-range price preference for high-quality audio gear.",
+      "relevanceScore": 95,
+      "matchReasons": [
+        "Favorite category (Electronics)",
+        "Interest (Fitness & Health)",
+        "Lifestyle (Casual)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "23",
+        "name": "Blender High Speed",
+        "category": "Home",
+        "price": 99.99,
+        "image": "https://images.unsplash.com/photo-1585515320310-259814833252?w=500&h=500&fit=crop",
+        "description": "Professional blender for smoothies and more",
+        "rating": 4.7,
+        "inStock": true
+      },
+      "explanation": "This professional high-speed blender is a fantastic addition to your kitchen, catering to your \"Home\" category and \"Cooking\" interest, especially for health-conscious smoothies. It's a versatile tool that supports your Fitness & Health goals, all within your mid-range budget.",
+      "relevanceScore": 94,
+      "matchReasons": [
+        "Favorite category (Home)",
+        "Interest (Cooking)",
+        "Interest (Fitness & Health)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "14",
+        "name": "Denim Jacket Classic",
+        "category": "Clothing",
+        "price": 89.99,
+        "image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&h=500&fit=crop",
+        "description": "Classic denim jacket with modern fit",
+        "rating": 4.3,
+        "inStock": true
+      },
+      "explanation": "A classic denim jacket is a wardrobe staple that perfectly matches your \"Clothing\" category and \"Fashion & Style\" interest, embodying a casual yet trendy look. Its modern fit makes it versatile for your everyday casual lifestyle, and it's well within your mid-range price.",
+      "relevanceScore": 93,
+      "matchReasons": [
+        "Favorite category (Clothing)",
+        "Interest (Fashion & Style)",
+        "Lifestyle (Casual)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "54",
+        "name": "Running Jacket Waterproof",
+        "category": "Sports",
+        "price": 89.99,
+        "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop",
+        "description": "Lightweight waterproof jacket for outdoor activities",
+        "rating": 4.5,
+        "inStock": true
+      },
+      "explanation": "This lightweight, waterproof running jacket is perfect for your \"Sports & Outdoors\" interests and \"Fitness & Health\" activities, ensuring comfort in any weather. It's a practical addition to your gear, aligning with your \"Sports\" category preference and mid-range budget.",
+      "relevanceScore": 92,
+      "matchReasons": [
+        "Favorite category (Sports)",
+        "Interest (Sports & Outdoors)",
+        "Interest (Fitness & Health)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "28",
+        "name": "Cooking Knife Set",
+        "category": "Home",
+        "price": 149.99,
+        "image": "https://images.unsplash.com/photo-1593618998160-e34014e67546?w=500&h=500&fit=crop",
+        "description": "Professional chef knife set with storage block",
+        "rating": 4.8,
+        "inStock": true
+      },
+      "explanation": "Elevate your culinary skills with this professional chef knife set, a great match for your \"Home\" category and \"Cooking\" interest. It's a practical investment for anyone who enjoys preparing meals, fitting perfectly into your mid-range price preference for quality kitchen tools.",
+      "relevanceScore": 91,
+      "matchReasons": [
+        "Favorite category (Home)",
+        "Interest (Cooking)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "53",
+        "name": "Instant Pot Pressure Cooker",
+        "category": "Home",
+        "price": 129.99,
+        "image": "https://images.unsplash.com/photo-1585515320310-259814833252?w=500&h=500&fit=crop",
+        "description": "Multi-functional pressure cooker with 7 cooking modes",
+        "rating": 4.8,
+        "inStock": true
+      },
+      "explanation": "This multi-functional Instant Pot is an excellent choice for your \"Home\" category and \"Cooking\" interest, making meal prep efficient and enjoyable. Its versatility supports a healthy and convenient lifestyle, fitting comfortably within your mid-range budget.",
+      "relevanceScore": 90,
+      "matchReasons": [
+        "Favorite category (Home)",
+        "Interest (Cooking)",
+        "Price preference (Mid-range)",
+        "Shopping frequency (Weekly)"
+      ]
+    },
+    {
+      "product": {
+        "id": "33",
+        "name": "Dumbbells Adjustable",
+        "category": "Sports",
+        "price": 189.99,
+        "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&h=500&fit=crop",
+        "description": "Adjustable dumbbells 5-52.5 lbs per hand",
+        "rating": 4.8,
+        "inStock": true
+      },
+      "explanation": "For your strong commitment to \"Fitness & Health\", these adjustable dumbbells are a game-changer for home workouts, saving space and offering varied resistance. While slightly above your typical mid-range, they represent a significant, long-term investment in your \"Sports\" interest.",
+      "relevanceScore": 89,
+      "matchReasons": [
+        "Interest (Fitness & Health)",
+        "Favorite category (Sports)",
+        "Price preference (Value for money)",
+        "Lifestyle (Active)"
+      ]
+    },
+    {
+      "product": {
+        "id": "22",
+        "name": "Canvas Sneakers",
+        "category": "Clothing",
+        "price": 54.99,
+        "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&h=500&fit=crop",
+        "description": "Comfortable canvas sneakers for everyday wear",
+        "rating": 4.2,
+        "inStock": true
+      },
+      "explanation": "These comfortable canvas sneakers are a perfect fit for your \"Clothing\" category, \"Fashion & Style\" interest, and casual lifestyle. They offer everyday versatility and excellent value, making them a smart, budget-friendly addition to your wardrobe.",
+      "relevanceScore": 88,
+      "matchReasons": [
+        "Favorite category (Clothing)",
+        "Interest (Fashion & Style)",
+        "Lifestyle (Casual)",
+        "Price preference (Good value)"
+      ]
+    },
+    {
+      "product": {
+        "id": "44",
+        "name": "Sweatshirt Hoodie",
+        "category": "Clothing",
+        "price": 59.99,
+        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop",
+        "description": "Comfortable hoodie with kangaroo pocket",
+        "rating": 4.3,
+        "inStock": true
+      },
+      "explanation": "A comfortable sweatshirt hoodie is ideal for your \"Clothing\" category and casual lifestyle, perfect for relaxed days or layering. It aligns with your \"Fashion & Style\" preference for comfortable yet stylish wear and offers great value.",
+      "relevanceScore": 87,
+      "matchReasons": [
+        "Favorite category (Clothing)",
+        "Interest (Fashion & Style)",
+        "Lifestyle (Casual)",
+        "Price preference (Good value)"
+      ]
+    },
+    {
+      "product": {
+        "id": "55",
+        "name": "Portable Bluetooth Speaker",
+        "category": "Electronics",
+        "price": 59.99,
+        "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop",
+        "description": "360° sound with waterproof design",
+        "rating": 4.6,
+        "inStock": true
+      },
+      "explanation": "This portable Bluetooth speaker is great for your \"Electronics\" interest, offering 360° sound for your casual lifestyle, whether at home or outdoors. Its waterproof design makes it perfect for \"Sports & Outdoors\" activities, all at an accessible price.",
+      "relevanceScore": 86,
+      "matchReasons": [
+        "Favorite category (Electronics)",
+        "Interest (Sports & Outdoors)",
+        "Lifestyle (Casual)",
+        "Price preference (Good value)"
+      ]
+    },
+    {
+      "product": {
+        "id": "63",
+        "name": "Air Fryer Digital",
+        "category": "Home",
+        "price": 119.99,
+        "image": "https://images.unsplash.com/photo-1585515320310-259814833252?w=500&h=500&fit=crop",
+        "description": "Large capacity air fryer with digital controls",
+        "rating": 4.6,
+        "inStock": true
+      },
+      "explanation": "This large capacity digital air fryer is a fantastic appliance for your \"Home\" category and \"Cooking\" interest, allowing for healthier and quicker meals. It aligns with a modern, convenient lifestyle, fitting well within your mid-range budget for kitchen upgrades.",
+      "relevanceScore": 85,
+      "matchReasons": [
+        "Favorite category (Home)",
+        "Interest (Cooking)",
+        "Price preference (Mid-range)"
+      ]
+    },
+    {
+      "product": {
+        "id": "27",
+        "name": "Hiking Boots Waterproof",
+        "category": "Sports",
+        "price": 139.99,
+        "image": "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=500&h=500&fit=crop",
+        "description": "Waterproof hiking boots with ankle support",
+        "rating": 4.7,
+        "inStock": true
+      },
+      "explanation": "For your \"Sports & Outdoors\" adventures, these waterproof hiking boots provide essential ankle support and protection, making them ideal for exploring. They align with your \"Sports\" category interest and offer durable quality within your mid-range budget.",
+      "relevanceScore": 84,
+      "matchReasons": [
+        "Favorite category (Sports)",
+        "Interest (Sports & Outdoors)",
+        "Price preference (Mid-range)"
+      ]
+    }
+  ],
+  "totalFiltered": 30,
+  "totalProducts": 100
+}
